@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TqsStackTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.042 s <<< FAILURE! - in TqsStackTest
+popOnNonEmptyStack  Time elapsed: 0.034 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Aveiro> but was: <null>
+	at TqsStackTest.popOnNonEmptyStack(TqsStackTest.java:21)
+
