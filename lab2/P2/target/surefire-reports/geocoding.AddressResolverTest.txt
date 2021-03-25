@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------
+Test set: geocoding.AddressResolverTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.472 s <<< FAILURE! - in geocoding.AddressResolverTest
+whenBadCoordidates_throwBadArrayindex  Time elapsed: 0.016 s  <<< ERROR!
+org.mockito.exceptions.misusing.PotentialStubbingProblem: 
+
+Strict stubbing argument mismatch. Please check:
+ - this invocation of 'get' method:
+    httpClient.get(
+    "http://open.mapquestapi.com/geocoding/v1/reverse?key=G1KjhsWGUtOdPAi4v3WbqtFqYMJR97cu&location=-200.000000%2C-200.000000&includeRoadMetadata=true"
+);
+    -> at geocoding.AddressResolver.findAddressForLocation(AddressResolver.java:44)
+ - has following stubbing(s) with different arguments:
+    1. httpClient.get("");
+      -> at geocoding.AddressResolverTest.whenBadCoordidates_throwBadArrayindex(AddressResolverTest.java:53)
+Typically, stubbing argument mismatch indicates user mistake when writing tests.
+Mockito fails early so that you can debug potential problem easily.
+However, there are legit scenarios when this exception generates false negative signal:
+  - stubbing the same method multiple times using 'given().will()' or 'when().then()' API
+    Please use 'will().given()' or 'doReturn().when()' API for stubbing.
+  - stubbed method is intentionally invoked with different arguments by code under test
+    Please use default or 'silent' JUnit Rule (equivalent of Strictness.LENIENT).
+For more information see javadoc for PotentialStubbingProblem class.
+	at geocoding.AddressResolverTest.whenBadCoordidates_throwBadArrayindex(AddressResolverTest.java:54)
+
