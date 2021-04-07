@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: tqs.lqb3.AppTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 115.396 s <<< FAILURE! - in tqs.lqb3.AppTest
+testWithTwoFirefoxs{FirefoxDriver, ChromeDriver}  Time elapsed: 80.269 s  <<< ERROR!
+org.junit.jupiter.api.extension.ParameterResolutionException: Failed to resolve parameter [org.openqa.selenium.chrome.ChromeDriver arg1] in method [void tqs.lqb3.AppTest.testWithTwoFirefoxs(org.openqa.selenium.firefox.FirefoxDriver,org.openqa.selenium.chrome.ChromeDriver)]: Could not initialize class org.openqa.selenium.WebDriverException
+Caused by: java.lang.NoClassDefFoundError: Could not initialize class org.openqa.selenium.WebDriverException
+
