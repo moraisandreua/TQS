@@ -1,3 +1,5 @@
+package tqs.lqb3;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,11 +9,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BlazeDemoConfirmation {
+public class BlazeDemoReserve {
 
   WebDriver driver;
 
-  public BlazeDemoConfirmation(WebDriver driver) {
+  @FindBy(css="tr:nth-child(2) .btn")
+  private By btn;
+
+  public BlazeDemoReserve(WebDriver driver) {
     this.driver = driver;
+  }
+
+  public BlazeDemoPurchase clickChooseThisFlight() {
+    driver.findElement(By.cssSelector("tr:nth-child(2) .btn")).click();
+    return new BlazeDemoPurchase(this.driver);
   }
 }

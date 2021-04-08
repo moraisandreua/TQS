@@ -22,13 +22,13 @@ public class AppTest
     void testChrome(@DockerBrowser(type=CHROME) RemoteWebDriver driver){
         driver.get("https://bonigarcia.github.io/selenium-jupiter/");
 
-        //assertThat(driver.getTitle(), constainsString("JUnit 5 extension for Selenium"));
+        assertThat(driver.getTitle(), containsString("JUnit 5 extension for Selenium"));
     }
 
     @Test
     void testChromeWithVersion(@DockerBrowser(type=CHROME, version="88.0") RemoteWebDriver driver){
         driver.get("https://bonigarcia.github.io/selenium-jupiter");
         
-        //assertThat(driver.getTitle(), containsString("JUnit 5 extension for Selenium"));
+        assertThat(driver.getTitle(), containsString("JUnit 5 extension for Selenium"));
     }
 }

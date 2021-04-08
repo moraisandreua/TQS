@@ -1,9 +1,8 @@
-import org.openqa.selenium.By;
+package tqs.lqb3;
+
+import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -17,11 +16,14 @@ public class BlazeDemo {
   @FindBy(name = "toPort")
   private By to;
 
-  @FindBy(className = ".btn-primary")
+  @FindBy(css = ".btn-primary")
   private By btn;
 
   public BlazeDemo(WebDriver driver) {
     this.driver = driver;
+    this.driver.get("https://blazedemo.com/");
+    this.driver.manage().window().setSize(new Dimension(1440, 875));
+    PageFactory.initElements(driver, this);
   }
 
   public By getFrom() {
@@ -53,7 +55,7 @@ public class BlazeDemo {
   }
 
   public BlazeDemoReserve clickFindFlights() {
-    this.driver.findElement(this.btn).click();
+    driver.findElement(By.cssSelector(".btn-primary")).click();
     return new BlazeDemoReserve(this.driver);
   }
 }

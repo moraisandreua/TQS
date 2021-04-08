@@ -1,3 +1,5 @@
+package tqs.lqb3;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -46,8 +48,8 @@ public class BlazeDemoPurchase {
   }
 
   public void setName(String name) {
-    driver.findElement(this.name).click();
-    driver.findElement(this.name).sendKeys(name);
+    driver.findElement(By.id("inputName")).click();
+    driver.findElement(By.id("inputName")).sendKeys(name);
   }
 
   public void setAddress(String address) {
@@ -75,10 +77,10 @@ public class BlazeDemoPurchase {
   }
 
   public void setCardType(String cardType) {
-    driver.findElement(this.cardType).click();
+    driver.findElement(By.id("cardType")).click();
 
     {
-      WebElement dropdown = driver.findElement(this.cardType);
+      WebElement dropdown = driver.findElement(By.id("cardType"));
       dropdown
         .findElement(By.xpath("//option[. = '" + cardType + "']"))
         .click();
@@ -102,7 +104,7 @@ public class BlazeDemoPurchase {
   }
 
   public BlazeDemoConfirmation clickConfirm() {
-    this.driver.findElement(this.btn).click();
+    this.driver.findElement(By.className("btn-primary")).click();
     return new BlazeDemoConfirmation(this.driver);
   }
 }
