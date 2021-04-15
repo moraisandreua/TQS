@@ -1,6 +1,7 @@
 package tqs.lab4.exe2;
 
 import org.springframework.stereotype.Service;
+import java.util.*;
 
 @Service
 public class CarManagerService {
@@ -11,7 +12,15 @@ public class CarManagerService {
         this.carRepository = carRepository;
     }
 
-    public Car getCarDetails(String key) {
-        return  carRepository.findByModel( key);
+    public Car save(Car car){
+        return carRepository.save(car);
+    }
+
+    public Optional<Car> getCarDetails(long key) {
+        return  carRepository.findById(key);
+    }
+
+    public List<Car> getAllCars(){
+        return  carRepository.findAll();
     }
 }
