@@ -1,4 +1,4 @@
-package tqs.lab4.exe2;
+package tqs.lab4.exe3;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

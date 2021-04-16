@@ -1,4 +1,4 @@
-package tqs.lab4.exe2;
+package tqs.lab4.exe3;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
