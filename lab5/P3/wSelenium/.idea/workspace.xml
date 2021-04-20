@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6614ec0-b50e-4500-9ee8-ed08b6362f89" name="Default Changelist" comment="" />
+    <list default="true" id="a6995328-ad23-4fbb-807e-69368cb52cb8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +38,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1rOj51HDhid28vEaxYqfdTof715" />
+  <component name="ProjectId" id="1rPVaxBEV3FZQIjZpcUdiAjCrQ1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -48,13 +48,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../P3/wSelenium/pom.xml" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -72,12 +66,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f6614ec0-b50e-4500-9ee8-ed08b6362f89" name="Default Changelist" comment="" />
-      <created>1618853842771</created>
+      <changelist id="a6995328-ad23-4fbb-807e-69368cb52cb8" name="Default Changelist" comment="" />
+      <created>1618877779736</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1618853842771</updated>
-      <workItem from="1618853843930" duration="7716000" />
+      <updated>1618877779736</updated>
+      <workItem from="1618877780819" duration="286000" />
     </task>
     <servers />
   </component>
@@ -94,15 +88,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="533" y="167" key="#com.intellij.ide.util.MemberChooser" timestamp="1618854493871">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state x="533" y="167" key="#com.intellij.ide.util.MemberChooser/0.25.1440.875@0.25.1440.875" timestamp="1618854493871" />
-    <state x="508" y="221" key="FileChooserDialogImpl" timestamp="1618877777020">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state x="508" y="221" key="FileChooserDialogImpl/0.25.1440.875@0.25.1440.875" timestamp="1618877777020" />
   </component>
 </project>
