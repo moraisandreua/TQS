@@ -1,28 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: tqs.lab5.RunCucumberTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.505 sec <<< FAILURE!
-Finding some cheese(Teste Selenium)  Time elapsed: 0.109 sec  <<< ERROR!
-io.cucumber.junit.UndefinedStepException: The step "I am on the Google search page" is undefined. You can implement it using the snippet(s) below:
-
-@Given("I am on the Google search page")
-public void i_am_on_the_google_search_page() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-
-Some other steps were also undefined:
-
-@When("I search for {string}")
-public void i_search_for(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@Then("the page title should start with {string}")
-public void the_page_title_should_start_with(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.522 s - in tqs.lab5.RunCucumberTest

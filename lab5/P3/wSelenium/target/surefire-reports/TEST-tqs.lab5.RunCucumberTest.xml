@@ -1,119 +1,65 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="tqs.lab5.RunCucumberTest" time="0.109" errors="1" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="tqs.lab5.RunCucumberTest" time="6.522" tests="1" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
-    <property name="java.vm.version" value="11.0.9.1+12-LTS"/>
-    <property name="sun.boot.library.path" value="/Users/andre/Library/Java/JavaVirtualMachines/correto/Contents/Home/lib"/>
     <property name="gopherProxySet" value="false"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium"/>
-    <property name="java.vm.vendor" value="Amazon.com Inc."/>
-    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="path.separator" value=":"/>
-    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="sun.os.patch.level" value="unknown"/>
-    <property name="user.country" value="PT"/>
-    <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium"/>
-    <property name="java.vm.compressedOopsMode" value="Zero based"/>
-    <property name="java.runtime.version" value="11.0.9.1+12-LTS"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="os.arch" value="x86_64"/>
-    <property name="java.io.tmpdir" value="/var/folders/b3/1qcfjfc53z1dq5xjfm10rjw00000gn/T/"/>
-    <property name="line.separator" value="
-"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="os.name" value="Mac OS X"/>
-    <property name="classworlds.conf" value="/Users/andre/.mvnvm/apache-maven-3.6.3/bin/m2.conf"/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/Users/andre/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
-    <property name="maven.conf" value="/Users/andre/.mvnvm/apache-maven-3.6.3/conf"/>
-    <property name="jdk.debug" value="release"/>
-    <property name="java.class.version" value="55.0"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.16"/>
-    <property name="library.jansi.path" value="/Users/andre/.mvnvm/apache-maven-3.6.3/lib/jansi-native"/>
-    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="user.home" value="/Users/andre"/>
-    <property name="user.timezone" value="Europe/Lisbon"/>
-    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
-    <property name="file.encoding" value="UTF-8"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
     <property name="java.specification.version" value="11"/>
-    <property name="user.name" value="andre"/>
-    <property name="java.class.path" value="/Users/andre/.mvnvm/apache-maven-3.6.3/boot/plexus-classworlds-2.6.0.jar"/>
-    <property name="java.vm.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium/target/test-classes:/Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium/target/classes:/Users/andre/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-java/6.8.1/cucumber-java-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-core/6.8.1/cucumber-core-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-gherkin/6.8.1/cucumber-gherkin-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-gherkin-messages/6.8.1/cucumber-gherkin-messages-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/messages/13.1.0/messages-13.1.0.jar:/Users/andre/.m2/repository/io/cucumber/tag-expressions/3.0.0/tag-expressions-3.0.0.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-expressions/10.3.0/cucumber-expressions-10.3.0.jar:/Users/andre/.m2/repository/io/cucumber/datatable/3.5.0/datatable-3.5.0.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-plugin/6.8.1/cucumber-plugin-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/docstring/6.8.1/docstring-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/html-formatter/9.0.0/html-formatter-9.0.0.jar:/Users/andre/.m2/repository/io/cucumber/create-meta/2.0.2/create-meta-2.0.2.jar:/Users/andre/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-junit/6.8.1/cucumber-junit-6.8.1.jar:/Users/andre/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/andre/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-java/4.0.0-beta-3/selenium-java-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-api/4.0.0-beta-3/selenium-api-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.0.0-beta-3/selenium-chrome-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/com/google/auto/service/auto-service-annotations/1.0-rc7/auto-service-annotations-1.0-rc7.jar:/Users/andre/.m2/repository/com/google/auto/service/auto-service/1.0-rc7/auto-service-1.0-rc7.jar:/Users/andre/.m2/repository/com/google/auto/auto-common/0.10/auto-common-0.10.jar:/Users/andre/.m2/repository/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar:/Users/andre/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/andre/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/andre/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/andre/.m2/repository/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0.jar:/Users/andre/.m2/repository/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4.jar:/Users/andre/.m2/repository/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.0.0-beta-3/selenium-chromium-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools/4.0.0-beta-3/selenium-devtools-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-http/4.0.0-beta-3/selenium-http-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-json/4.0.0-beta-3/selenium-json-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v85/4.0.0-beta-3/selenium-devtools-v85-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v88/4.0.0-beta-3/selenium-devtools-v88-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v89/4.0.0-beta-3/selenium-devtools-v89-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v90/4.0.0-beta-3/selenium-devtools-v90-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v91/4.0.0-beta-3/selenium-devtools-v91-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/4.0.0-beta-3/selenium-edge-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/4.0.0-beta-3/selenium-firefox-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-firefox-xpi-driver/4.0.0-beta-3/selenium-firefox-xpi-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/4.0.0-beta-3/selenium-ie-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-opera-driver/4.0.0-beta-3/selenium-opera-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.0.0-beta-3/selenium-remote-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/io/netty/netty-buffer/4.1.58.Final/netty-buffer-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-codec-http/4.1.58.Final/netty-codec-http-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-codec/4.1.58.Final/netty-codec-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-handler/4.1.58.Final/netty-handler-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-common/4.1.58.Final/netty-common-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-transport-native-epoll/4.1.58.Final/netty-transport-native-epoll-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-transport-native-kqueue/4.1.58.Final/netty-transport-native-kqueue-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.58.Final/netty-transport-native-unix-common-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-transport/4.1.58.Final/netty-transport-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-resolver/4.1.58.Final/netty-resolver-4.1.58.Final.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-api/1.0.0/opentelemetry-api-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-context/1.0.0/opentelemetry-context-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.0.0/opentelemetry-exporter-logging-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.0.0-alpha/opentelemetry-sdk-metrics-1.0.0-alpha.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.0.0/opentelemetry-sdk-common-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.0.0-alpha/opentelemetry-sdk-extension-autoconfigure-1.0.0-alpha.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.0.0/opentelemetry-sdk-trace-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-api-metrics/1.0.0-alpha/opentelemetry-api-metrics-1.0.0-alpha.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.0.0/opentelemetry-sdk-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-semconv/1.0.0-alpha/opentelemetry-semconv-1.0.0-alpha.jar:/Users/andre/.m2/repository/net/bytebuddy/byte-buddy/1.10.19/byte-buddy-1.10.19.jar:/Users/andre/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/Users/andre/.m2/repository/org/asynchttpclient/async-http-client/2.12.2/async-http-client-2.12.2.jar:/Users/andre/.m2/repository/org/asynchttpclient/async-http-client-netty-utils/2.12.2/async-http-client-netty-utils-2.12.2.jar:/Users/andre/.m2/repository/io/netty/netty-codec-socks/4.1.53.Final/netty-codec-socks-4.1.53.Final.jar:/Users/andre/.m2/repository/io/netty/netty-handler-proxy/4.1.53.Final/netty-handler-proxy-4.1.53.Final.jar:/Users/andre/.m2/repository/io/netty/netty-transport-native-epoll/4.1.53.Final/netty-transport-native-epoll-4.1.53.Final-linux-x86_64.jar:/Users/andre/.m2/repository/io/netty/netty-transport-native-kqueue/4.1.53.Final/netty-transport-native-kqueue-4.1.53.Final-osx-x86_64.jar:/Users/andre/.m2/repository/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar:/Users/andre/.m2/repository/com/typesafe/netty/netty-reactive-streams/2.0.4/netty-reactive-streams-2.0.4.jar:/Users/andre/.m2/repository/com/sun/activation/jakarta.activation/1.2.2/jakarta.activation-1.2.2.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/4.0.0-beta-3/selenium-safari-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-support/4.0.0-beta-3/selenium-support-4.0.0-beta-3.jar:/Users/andre/.m2/repository/io/github/bonigarcia/webdrivermanager/4.4.0/webdrivermanager-4.4.0.jar:/Users/andre/.m2/repository/commons-io/commons-io/2.8.0/commons-io-2.8.0.jar:/Users/andre/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:/Users/andre/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/Users/andre/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.0.3/httpclient5-5.0.3.jar:/Users/andre/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.0.2/httpcore5-5.0.2.jar:/Users/andre/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.0.2/httpcore5-h2-5.0.2.jar:/Users/andre/.m2/repository/commons-codec/commons-codec/1.13/commons-codec-1.13.jar:/Users/andre/.m2/repository/org/rauschig/jarchivelib/1.1.0/jarchivelib-1.1.0.jar:/Users/andre/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar:/Users/andre/.m2/repository/org/jsoup/jsoup/1.13.1/jsoup-1.13.1.jar:"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
-    <property name="java.home" value="/Users/andre/Library/Java/JavaVirtualMachines/correto/Contents/Home"/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="PT"/>
+    <property name="sun.boot.library.path" value="/Users/andre/Library/Java/JavaVirtualMachines/correto/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium/target/surefire/surefirebooter677036977566174998.jar /Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium/target/surefire 2021-04-20T16-24-11_208-jvmRun1 surefire45563225936927698tmp surefire_0658611799178032345tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium/target/test-classes:/Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium/target/classes:/Users/andre/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-java/6.8.1/cucumber-java-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-core/6.8.1/cucumber-core-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-gherkin/6.8.1/cucumber-gherkin-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-gherkin-messages/6.8.1/cucumber-gherkin-messages-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/messages/13.1.0/messages-13.1.0.jar:/Users/andre/.m2/repository/io/cucumber/tag-expressions/3.0.0/tag-expressions-3.0.0.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-expressions/10.3.0/cucumber-expressions-10.3.0.jar:/Users/andre/.m2/repository/io/cucumber/datatable/3.5.0/datatable-3.5.0.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-plugin/6.8.1/cucumber-plugin-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/docstring/6.8.1/docstring-6.8.1.jar:/Users/andre/.m2/repository/io/cucumber/html-formatter/9.0.0/html-formatter-9.0.0.jar:/Users/andre/.m2/repository/io/cucumber/create-meta/2.0.2/create-meta-2.0.2.jar:/Users/andre/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/andre/.m2/repository/io/cucumber/cucumber-junit/6.8.1/cucumber-junit-6.8.1.jar:/Users/andre/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/andre/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-java/4.0.0-beta-3/selenium-java-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-api/4.0.0-beta-3/selenium-api-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.0.0-beta-3/selenium-chrome-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/com/google/auto/service/auto-service-annotations/1.0-rc7/auto-service-annotations-1.0-rc7.jar:/Users/andre/.m2/repository/com/google/auto/service/auto-service/1.0-rc7/auto-service-1.0-rc7.jar:/Users/andre/.m2/repository/com/google/auto/auto-common/0.10/auto-common-0.10.jar:/Users/andre/.m2/repository/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar:/Users/andre/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/andre/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/andre/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/andre/.m2/repository/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0.jar:/Users/andre/.m2/repository/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4.jar:/Users/andre/.m2/repository/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.0.0-beta-3/selenium-chromium-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools/4.0.0-beta-3/selenium-devtools-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-http/4.0.0-beta-3/selenium-http-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-json/4.0.0-beta-3/selenium-json-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v85/4.0.0-beta-3/selenium-devtools-v85-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v88/4.0.0-beta-3/selenium-devtools-v88-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v89/4.0.0-beta-3/selenium-devtools-v89-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v90/4.0.0-beta-3/selenium-devtools-v90-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v91/4.0.0-beta-3/selenium-devtools-v91-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/4.0.0-beta-3/selenium-edge-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/4.0.0-beta-3/selenium-firefox-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-firefox-xpi-driver/4.0.0-beta-3/selenium-firefox-xpi-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/4.0.0-beta-3/selenium-ie-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-opera-driver/4.0.0-beta-3/selenium-opera-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.0.0-beta-3/selenium-remote-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/io/netty/netty-buffer/4.1.58.Final/netty-buffer-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-codec-http/4.1.58.Final/netty-codec-http-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-codec/4.1.58.Final/netty-codec-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-handler/4.1.58.Final/netty-handler-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-common/4.1.58.Final/netty-common-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-transport-native-epoll/4.1.58.Final/netty-transport-native-epoll-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-transport-native-kqueue/4.1.58.Final/netty-transport-native-kqueue-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.58.Final/netty-transport-native-unix-common-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-transport/4.1.58.Final/netty-transport-4.1.58.Final.jar:/Users/andre/.m2/repository/io/netty/netty-resolver/4.1.58.Final/netty-resolver-4.1.58.Final.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-api/1.0.0/opentelemetry-api-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-context/1.0.0/opentelemetry-context-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.0.0/opentelemetry-exporter-logging-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.0.0-alpha/opentelemetry-sdk-metrics-1.0.0-alpha.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.0.0/opentelemetry-sdk-common-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.0.0-alpha/opentelemetry-sdk-extension-autoconfigure-1.0.0-alpha.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.0.0/opentelemetry-sdk-trace-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-api-metrics/1.0.0-alpha/opentelemetry-api-metrics-1.0.0-alpha.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.0.0/opentelemetry-sdk-1.0.0.jar:/Users/andre/.m2/repository/io/opentelemetry/opentelemetry-semconv/1.0.0-alpha/opentelemetry-semconv-1.0.0-alpha.jar:/Users/andre/.m2/repository/net/bytebuddy/byte-buddy/1.10.19/byte-buddy-1.10.19.jar:/Users/andre/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/Users/andre/.m2/repository/org/asynchttpclient/async-http-client/2.12.2/async-http-client-2.12.2.jar:/Users/andre/.m2/repository/org/asynchttpclient/async-http-client-netty-utils/2.12.2/async-http-client-netty-utils-2.12.2.jar:/Users/andre/.m2/repository/io/netty/netty-codec-socks/4.1.53.Final/netty-codec-socks-4.1.53.Final.jar:/Users/andre/.m2/repository/io/netty/netty-handler-proxy/4.1.53.Final/netty-handler-proxy-4.1.53.Final.jar:/Users/andre/.m2/repository/io/netty/netty-transport-native-epoll/4.1.53.Final/netty-transport-native-epoll-4.1.53.Final-linux-x86_64.jar:/Users/andre/.m2/repository/io/netty/netty-transport-native-kqueue/4.1.53.Final/netty-transport-native-kqueue-4.1.53.Final-osx-x86_64.jar:/Users/andre/.m2/repository/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar:/Users/andre/.m2/repository/com/typesafe/netty/netty-reactive-streams/2.0.4/netty-reactive-streams-2.0.4.jar:/Users/andre/.m2/repository/com/sun/activation/jakarta.activation/1.2.2/jakarta.activation-1.2.2.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/4.0.0-beta-3/selenium-safari-driver-4.0.0-beta-3.jar:/Users/andre/.m2/repository/org/seleniumhq/selenium/selenium-support/4.0.0-beta-3/selenium-support-4.0.0-beta-3.jar:/Users/andre/.m2/repository/io/github/bonigarcia/webdrivermanager/4.4.0/webdrivermanager-4.4.0.jar:/Users/andre/.m2/repository/commons-io/commons-io/2.8.0/commons-io-2.8.0.jar:/Users/andre/.m2/repository/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar:/Users/andre/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/Users/andre/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.0.3/httpclient5-5.0.3.jar:/Users/andre/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.0.2/httpcore5-5.0.2.jar:/Users/andre/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.0.2/httpcore5-h2-5.0.2.jar:/Users/andre/.m2/repository/commons-codec/commons-codec/1.13/commons-codec-1.13.jar:/Users/andre/.m2/repository/org/rauschig/jarchivelib/1.1.0/jarchivelib-1.1.0.jar:/Users/andre/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar:/Users/andre/.m2/repository/org/jsoup/jsoup/1.13.1/jsoup-1.13.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/andre"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
-    <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.version" value="11.0.9.1"/>
-    <property name="java.vendor" value="Amazon.com Inc."/>
-    <property name="maven.home" value="/Users/andre/.mvnvm/apache-maven-3.6.3"/>
-    <property name="file.separator" value="/"/>
     <property name="java.version.date" value="2020-11-04"/>
-    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-11/issues/"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
-    <property name="sun.cpu.endian" value="little"/>
-    <property name="java.vendor.version" value="Corretto-11.0.9.12.1"/>
-    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.home" value="/Users/andre/Library/Java/JavaVirtualMachines/correto/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium/target/surefire/surefirebooter677036977566174998.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="sun.cpu.isalist" value=""/>
+    <property name="java.runtime.version" value="11.0.9.1+12-LTS"/>
+    <property name="user.name" value="andre"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="10.16"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-11.0.9.12.1"/>
+    <property name="localRepository" value="/Users/andre/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-11/issues/"/>
+    <property name="java.io.tmpdir" value="/var/folders/b3/1qcfjfc53z1dq5xjfm10rjw00000gn/T/"/>
+    <property name="java.version" value="11.0.9.1"/>
+    <property name="user.dir" value="/Users/andre/Documents/GitHub/TQS/lab5/P3/wSelenium"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/Users/andre/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="11.0.9.1+12-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="55.0"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase classname="Teste Selenium" name="Finding some cheese" time="0.109">
-    <error message="The step &quot;I am on the Google search page&quot; is undefined. You can implement it using the snippet(s) below:
-
-@Given(&quot;I am on the Google search page&quot;)
-public void i_am_on_the_google_search_page() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-
-Some other steps were also undefined:
-
-@When(&quot;I search for {string}&quot;)
-public void i_search_for(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@Then(&quot;the page title should start with {string}&quot;)
-public void the_page_title_should_start_with(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-" type="io.cucumber.junit.UndefinedStepException">io.cucumber.junit.UndefinedStepException: The step &quot;I am on the Google search page&quot; is undefined. You can implement it using the snippet(s) below:
-
-@Given(&quot;I am on the Google search page&quot;)
-public void i_am_on_the_google_search_page() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-
-Some other steps were also undefined:
-
-@When(&quot;I search for {string}&quot;)
-public void i_search_for(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@Then(&quot;the page title should start with {string}&quot;)
-public void the_page_title_should_start_with(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-</error>
-    <system-out>
-Scenario: Finding some cheese                    &amp;#27;[90m# tqs/lab5/selenium_test.feature:4&amp;#27;[0m
-  &amp;#27;[33mGiven &amp;#27;[0m&amp;#27;[33mI am on the Google search page&amp;#27;[0m           &amp;#27;[90m# null&amp;#27;[0m
-  &amp;#27;[36mWhen &amp;#27;[0m&amp;#27;[36mI search for &quot;Cheese!&quot;&amp;#27;[0m                    &amp;#27;[90m# null&amp;#27;[0m
-  &amp;#27;[36mThen &amp;#27;[0m&amp;#27;[36mthe page title should start with &quot;cheese&quot;&amp;#27;[0m &amp;#27;[90m# null&amp;#27;[0m
-</system-out>
-  </testcase>
+  <testcase name="Finding some cheese" classname="Teste Selenium" time="6.147"/>
 </testsuite>

@@ -49,6 +49,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -62,6 +68,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="wSelenium [test]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="test" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -71,7 +102,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1618877779736</updated>
-      <workItem from="1618877780819" duration="286000" />
+      <workItem from="1618877780819" duration="5980000" />
     </task>
     <servers />
   </component>
@@ -88,5 +119,27 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618923049493">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="184" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.875@0.25.1440.875" timestamp="1618923049493" />
+    <state width="1398" height="222" key="GridCell.Tab.0.bottom" timestamp="1618932801201">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1398" height="222" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1618932801201" />
+    <state width="1398" height="222" key="GridCell.Tab.0.center" timestamp="1618932801200">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1398" height="222" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1618932801200" />
+    <state width="1398" height="222" key="GridCell.Tab.0.left" timestamp="1618932801200">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1398" height="222" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1618932801200" />
+    <state width="1398" height="222" key="GridCell.Tab.0.right" timestamp="1618932801201">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state width="1398" height="222" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1618932801201" />
   </component>
 </project>
