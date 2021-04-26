@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import sets.SetOfNaturals;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 /**
  * A set of 5 numbers and 2 starts according to the Euromillions ranges.
@@ -19,6 +19,7 @@ public class Dip {
 
     private SetOfNaturals numbers;
     private SetOfNaturals starts;
+    private SecureRandom generator = new SecureRandom();
 
     public Dip() {
         numbers = new SetOfNaturals();
@@ -46,21 +47,20 @@ public class Dip {
     }
 
     public static Dip generateRandomDip() {
-        Random generator = new Random();
 
         Dip randomDip = new Dip();
-        for (int i = 0; i < MAX_NUMBERS; ) {
+        for (int i = 0; i < MAX_NUMBERS; i++) {
             int candidate = generator.nextInt(MAX_RANGE_NUMBERS) + 1;
             if (!randomDip.getNumbersColl().contains(candidate)) {
                 randomDip.getNumbersColl().add(candidate);
-                i++;
+        
             }
         }
-        for (int i = 0; i < MAX_STARS; ) {
+        for (int i = 0; i < MAX_STARS; i++) {
             int candidate = generator.nextInt(MAX_RANGE_STARS) + 1;
             if (!randomDip.getStarsColl().contains(candidate)) {
                 randomDip.getStarsColl().add(candidate);
-                i++;
+                
             }
         }
         return randomDip;
