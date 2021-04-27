@@ -1,5 +1,7 @@
 package sets;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.Level;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Objects;
@@ -42,6 +44,8 @@ public class SetOfNaturals implements Iterable<Integer> {
 
 
 	public boolean intersects(SetOfNaturals subset) {
+		Logger logger = Logger.getLogger(SetOfNaturals.class.getName());
+		logger.log(Level.FATAL, subset.toString());
 		return false;
 	}
 

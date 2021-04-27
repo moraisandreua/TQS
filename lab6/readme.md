@@ -33,3 +33,5 @@ O *technical debt found* indica a previsão de tempo necessário para uma pessoa
 
 ### alínea b)
 ![corrigido](https://i.imgur.com/A4itKEV.png)
+
+![overview](https://i.imgur.com/RbKaYo8.png)

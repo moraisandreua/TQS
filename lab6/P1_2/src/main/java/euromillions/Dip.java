@@ -19,7 +19,7 @@ public class Dip {
 
     private SetOfNaturals numbers;
     private SetOfNaturals starts;
-    private SecureRandom generator = new SecureRandom();
+    private static SecureRandom generator = new SecureRandom();
 
     public Dip() {
         numbers = new SetOfNaturals();

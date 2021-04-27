@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import sets.SetOfNaturals;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 /**
  * A set of 5 numbers and 2 starts according to the Euromillions ranges.
@@ -19,50 +19,50 @@ public class Dip {
 
     private SetOfNaturals numbers;
     private SetOfNaturals starts;
+<span class="fc" id="L22">    private static SecureRandom generator = new SecureRandom();</span>
 
-<span class="fc" id="L23">    public Dip() {</span>
-<span class="fc" id="L24">        numbers = new SetOfNaturals();</span>
-<span class="fc" id="L25">        starts = new SetOfNaturals();</span>
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L24">    public Dip() {</span>
+<span class="fc" id="L25">        numbers = new SetOfNaturals();</span>
+<span class="fc" id="L26">        starts = new SetOfNaturals();</span>
+<span class="fc" id="L27">    }</span>
 
     public Dip(int[] arrayOfNumbers, int[] arrayOfStarts) {
-<span class="fc" id="L29">        this();</span>
+<span class="fc" id="L30">        this();</span>
 
-<span class="pc bpc" id="L31" title="2 of 4 branches missed.">        if (5 == arrayOfNumbers.length &amp;&amp; 2 == arrayOfStarts.length) {</span>
-<span class="fc" id="L32">            numbers.add(arrayOfNumbers);</span>
-<span class="fc" id="L33">            starts.add(arrayOfStarts);</span>
+<span class="pc bpc" id="L32" title="2 of 4 branches missed.">        if (5 == arrayOfNumbers.length &amp;&amp; 2 == arrayOfStarts.length) {</span>
+<span class="fc" id="L33">            numbers.add(arrayOfNumbers);</span>
+<span class="fc" id="L34">            starts.add(arrayOfStarts);</span>
         } else {
-<span class="nc" id="L35">            throw new IllegalArgumentException(&quot;wrong number of elements in numbers/stars&quot;);</span>
+<span class="nc" id="L36">            throw new IllegalArgumentException(&quot;wrong number of elements in numbers/stars&quot;);</span>
         }
 
-<span class="fc" id="L38">    }</span>
+<span class="fc" id="L39">    }</span>
 
     public SetOfNaturals getNumbersColl() {
-<span class="fc" id="L41">        return numbers;</span>
+<span class="fc" id="L42">        return numbers;</span>
     }
 
     public SetOfNaturals getStarsColl() {
-<span class="fc" id="L45">        return starts;</span>
+<span class="fc" id="L46">        return starts;</span>
     }
 
     public static Dip generateRandomDip() {
-<span class="fc" id="L49">        Random generator = new Random();</span>
 
 <span class="fc" id="L51">        Dip randomDip = new Dip();</span>
-<span class="fc bfc" id="L52" title="All 2 branches covered.">        for (int i = 0; i &lt; MAX_NUMBERS; ) {</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        for (int i = 0; i &lt; MAX_NUMBERS; i++) {</span>
 <span class="fc" id="L53">            int candidate = generator.nextInt(MAX_RANGE_NUMBERS) + 1;</span>
-<span class="pc bpc" id="L54" title="1 of 2 branches missed.">            if (!randomDip.getNumbersColl().contains(candidate)) {</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">            if (!randomDip.getNumbersColl().contains(candidate)) {</span>
 <span class="fc" id="L55">                randomDip.getNumbersColl().add(candidate);</span>
-<span class="fc" id="L56">                i++;</span>
+        
             }
-<span class="fc" id="L58">        }</span>
-<span class="fc bfc" id="L59" title="All 2 branches covered.">        for (int i = 0; i &lt; MAX_STARS; ) {</span>
+        }
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        for (int i = 0; i &lt; MAX_STARS; i++) {</span>
 <span class="fc" id="L60">            int candidate = generator.nextInt(MAX_RANGE_STARS) + 1;</span>
 <span class="fc bfc" id="L61" title="All 2 branches covered.">            if (!randomDip.getStarsColl().contains(candidate)) {</span>
 <span class="fc" id="L62">                randomDip.getStarsColl().add(candidate);</span>
-<span class="fc" id="L63">                i++;</span>
+                
             }
-<span class="fc" id="L65">        }</span>
+        }
 <span class="fc" id="L66">        return randomDip;</span>
     }
 

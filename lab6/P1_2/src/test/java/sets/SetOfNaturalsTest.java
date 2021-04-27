@@ -11,14 +11,14 @@ import org.junit.jupiter.api.*;
 /**
  * @author ico0
  */
-public class SetOfNaturalsTest {
+class SetOfNaturalsTest {
     private SetOfNaturals setA;
     private SetOfNaturals setB;
     private SetOfNaturals setC;
     private SetOfNaturals setD;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         setA = new SetOfNaturals();
         setB = SetOfNaturals.fromArray(new int[]{10, 20, 30, 40, 50, 60});
 
@@ -30,12 +30,12 @@ public class SetOfNaturalsTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         setA = setB = setC = setD = null;
     }
 
     @Test
-    public void testAddElement() {
+    void testAddElement() {
 
         setA.add(99);
         assertTrue(setA.contains(99), "add: added element not found in set.");
@@ -47,7 +47,7 @@ public class SetOfNaturalsTest {
     }
 
     @Test
-    public void testAddBadArray() {
+    void testAddBadArray() {
         int[] elems = new int[]{10, 20, -30};
 
         // must fail with exception
@@ -56,17 +56,17 @@ public class SetOfNaturalsTest {
 
 
     @Test
-    public void testIntersectForNoIntersection() {
+    void testIntersectForNoIntersection() {
         assertFalse(setA.intersects(setB), "no intersection but was reported as existing");
     }
 
     @Test
-    public void testDuplicateOnAdd(){
+    void testDuplicateOnAdd(){
         assertThrows(IllegalArgumentException.class, () -> setB.add(10));
     }
 
     @Test
-    public void testDuplicateArray(){
+    void testDuplicateArray(){
         int[] stars = {9,8,8};
 
         assertThrows(IllegalArgumentException.class, () -> setA.fromArray(stars));

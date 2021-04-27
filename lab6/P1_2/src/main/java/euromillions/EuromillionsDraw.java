@@ -1,7 +1,6 @@
 package euromillions;
 
 import java.util.ArrayList;
-
 /**
  * Models an Euromillions draw. Contains the solution and allows to find
  * matches.
@@ -26,7 +25,7 @@ public class EuromillionsDraw {
      *
      * @return new instance
      */
-    static public EuromillionsDraw generateRandomDraw() {
+    static EuromillionsDraw generateRandomDraw() {
         return new EuromillionsDraw(Dip.generateRandomDip());
     }
 
@@ -39,7 +38,7 @@ public class EuromillionsDraw {
      */
     public ArrayList<Dip> findMatches(CuponEuromillions playCuppon) {
 
-        ArrayList<Dip> results = new ArrayList<Dip>();
+        ArrayList<Dip> results = new ArrayList<>();
         Dip workingDip;
 
         for (Dip dip : playCuppon) {
