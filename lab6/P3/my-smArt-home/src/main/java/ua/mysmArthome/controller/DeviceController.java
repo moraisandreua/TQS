@@ -33,6 +33,15 @@ public class DeviceController {
     private RpcProducer producer = new RpcProducer();
 
     @GetMapping("/logs/{id}")
+    // faz coisas
+    // muitas coisas
+    // imensas coisas
+    // estou a tentar invocar bad smells
+    // não importa onde coloque isto
+    // será que já chega
+    // não sei bem
+    // além disto, estes comentários estão "duplicados"
+    // ou seja, também deve dar algum aviso no Sonnar
     public String getLogsbyId(@PathVariable(value="id") int id) throws ResourceNotFoundException {
         Device device = deviceRepository.findDeviceByInBrokerId(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Device "+id+" not found"));
@@ -48,6 +57,15 @@ public class DeviceController {
     }
 
     @GetMapping("/{id}")
+    // faz coisas
+    // muitas coisas
+    // imensas coisas
+    // estou a tentar invocar bad smells
+    // não importa onde coloque isto
+    // será que já chega
+    // não sei bem
+    // além disto, estes comentários estão "duplicados"
+    // ou seja, também deve dar algum aviso no Sonnar
     public String getDevicebyId(@PathVariable(value="id") int id) throws ResourceNotFoundException {
         Device device = deviceRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Device "+id+" not found"));
@@ -65,6 +83,15 @@ public class DeviceController {
     }
     
     @PostMapping("/post")
+    // faz coisas
+    // muitas coisas
+    // imensas coisas
+    // estou a tentar invocar bad smells
+    // não importa onde coloque isto
+    // será que já chega
+    // não sei bem
+    // além disto, estes comentários estão "duplicados"
+    // ou seja, também deve dar algum aviso no Sonnar
     public Device createDevice(Integer id_home, String device_id) throws ResourceNotFoundException{
         SmartHome sm = smartHomeRepository.findById(id_home).orElseThrow(()-> new ResourceNotFoundException("Error"));
         Device d = new Device();
@@ -94,6 +121,15 @@ public class DeviceController {
     }
 
     @CrossOrigin
+    // faz coisas
+    // muitas coisas
+    // imensas coisas
+    // estou a tentar invocar bad smells
+    // não importa onde coloque isto
+    // será que já chega
+    // não sei bem
+    // além disto, estes comentários estão "duplicados"
+    // ou seja, também deve dar algum aviso no Sonnar
     @GetMapping("/alldevices/{username}")
     public String getDevices(@PathVariable(value = "username") String username) throws ResourceNotFoundException {
         User activeUser = userRepository.findUserByUsername(username)
@@ -132,6 +168,15 @@ public class DeviceController {
     
     @CrossOrigin
     @PostMapping("/turnOn")
+    // faz coisas
+    // muitas coisas
+    // imensas coisas
+    // estou a tentar invocar bad smells
+    // não importa onde coloque isto
+    // será que já chega
+    // não sei bem
+    // além disto, estes comentários estão "duplicados"
+    // ou seja, também deve dar algum aviso no Sonnar
     public String turnOnDevice(@RequestParam(value = "id",required = true) String deviceId) throws ResourceNotFoundException {
         Integer id = Integer.valueOf(deviceId);
         Device d = deviceRepository.findDeviceByInBrokerId(id)
@@ -152,6 +197,15 @@ public class DeviceController {
 
     @CrossOrigin
     @PostMapping("/turnOff")
+    // faz coisas
+    // muitas coisas
+    // imensas coisas
+    // estou a tentar invocar bad smells
+    // não importa onde coloque isto
+    // será que já chega
+    // não sei bem
+    // além disto, estes comentários estão "duplicados"
+    // ou seja, também deve dar algum aviso no Sonnar
     public String turnOffDevice(@RequestParam(value = "id",required = true) String deviceId) throws ResourceNotFoundException {
         Integer id = Integer.valueOf(deviceId);
         Device d = deviceRepository.findDeviceByInBrokerId(id)
@@ -171,12 +225,30 @@ public class DeviceController {
 
     @CrossOrigin
     @GetMapping("/brightness")
+    // faz coisas
+    // muitas coisas
+    // imensas coisas
+    // estou a tentar invocar bad smells
+    // não importa onde coloque isto
+    // será que já chega
+    // não sei bem
+    // além disto, estes comentários estão "duplicados"
+    // ou seja, também deve dar algum aviso no Sonnar
     public String BrightnessOfDevice(@RequestParam(value = "id",required = true)  String deviceId){
         return producer.createMessage("brightness",deviceId); //right now brightness is random
     }
 
     @CrossOrigin
     @GetMapping("/hardcheck/{username}")
+    // faz coisas
+    // muitas coisas
+    // imensas coisas
+    // estou a tentar invocar bad smells
+    // não importa onde coloque isto
+    // será que já chega
+    // não sei bem
+    // além disto, estes comentários estão "duplicados"
+    // ou seja, também deve dar algum aviso no Sonnar
     public String hardcheck(@PathVariable(value = "username") String username) throws ResourceNotFoundException {
         String id="";
         Integer home_id = userRepository.findHomesByUsername(username).getHomes_id().get(0);
@@ -200,11 +272,20 @@ public class DeviceController {
         return dtf.format(now);
     }
 
+
+    String retorno="";
     @CrossOrigin
     @GetMapping("/info/{id}")
+    // faz coisas
+    // muitas coisas
+    // imensas coisas
+    // estou a tentar invocar bad smells
+    // não importa onde coloque isto
+    // será que já chega
+    // não sei bem
+    // além disto, estes comentários estão "duplicados"
+    // ou seja, também deve dar algum aviso no Sonnar
     public String getDeviceInfo(@PathVariable(value = "id") String id) throws ResourceNotFoundException {
-        String retorno="";
-
         Integer deviceId=Integer.valueOf(id);
         Device device = deviceRepository.findDeviceByInBrokerId(deviceId)
                 .orElseThrow(() -> new ResourceNotFoundException("Device not found for this id : " + deviceId));
@@ -213,7 +294,8 @@ public class DeviceController {
         JSONObject obj = new JSONObject(d_type);
         d_type = obj.getString("type");
 
-        String curr_value = device.getLogs().get(device.getLogs().size()-1).getValue();
+        int index = device.getLogs().size()-1;
+        String curr_value = device.getLogs().get(index).getValue();
 
         String d_status = producer.createWithProperty("get", id, "status");
         obj = new JSONObject(d_status);
@@ -232,7 +314,12 @@ public class DeviceController {
         Collections.reverse(d_logs_temp);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         //type, current_value, status, active_since, logs
-        retorno += "{\"type\": \""+d_type+"\", \"current_value\": \""+curr_value+"\", \"status\": \""+d_status+"\", \"active_since\": \""+d_act+"\", \"logs\":\"";
+
+        String type = "\"type\": \""+d_type+"\"";
+        String value = "\"current_value\": \""+curr_value+"\"";
+        String status = "\"status\": \""+d_status+"\"";
+        String active_since = "\"active_since\": \""+d_act+"\"";
+        retorno += "{ "+type+", "+value+", "+status+", "+active_since+", \"logs\":\"";
 
         for(Log l : d_logs_temp){
             retorno+="<p>[LOG AT "+dtf.format(l.getData())+"] "+l.getValue()+"</p>";
@@ -244,6 +331,15 @@ public class DeviceController {
 
     @CrossOrigin
     @GetMapping("/graphs/{id}")
+    // faz coisas
+    // muitas coisas
+    // imensas coisas
+    // estou a tentar invocar bad smells
+    // não importa onde coloque isto
+    // será que já chega
+    // não sei bem
+    // além disto, estes comentários estão "duplicados"
+    // ou seja, também deve dar algum aviso no Sonnar
     public String getDeviceGraphs(@PathVariable(value = "id") String id) throws ResourceNotFoundException {
         String retorno="";
 
