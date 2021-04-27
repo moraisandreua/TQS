@@ -34,4 +34,21 @@ O *technical debt found* indica a previsão de tempo necessário para uma pessoa
 ### alínea b)
 ![corrigido](https://i.imgur.com/A4itKEV.png)
 
+No caso abaixo, correspondente ao Overalcode, não pude corrigir o codesmell que falta, porque o codigo era necessário.
 ![overview](https://i.imgur.com/RbKaYo8.png)
+
+### alínea d)
+Coverage:
+![coverage](https://i.imgur.com/9TWorZw.png)
+
+Lines to Cover:
+![lines_to_cover](https://i.imgur.com/bQOByGN.png)
+
+Uncovered Lines:
+![uncovered_lines](https://i.imgur.com/My5mwU5.png)
+
+Conditions:
+![conditions](https://i.imgur.com/iN8QNS9.png)
+
+Uncovered Conditions:
+![uncovered_conditions](https://i.imgur.com/cGwn697.png)
