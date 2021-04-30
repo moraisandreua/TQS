@@ -19,15 +19,14 @@ public class SmartHomeController {
     private SmartHomeRepository smartHomeRepository;
 
 
-
     public SmartHomeController() throws ResourceNotFoundException {
     }
 
     @PostMapping("/post/{name}")
     public String createSmartHome(@PathVariable String name) throws ResourceNotFoundException {
         SmartHome smartHome = smartHomeRepository.save(new SmartHome(name));
-        System.out.println("{\"id\":"+smartHome.getId()+",\"name\":\""+smartHome.getName()+"\"}");
-        return "{\"id\":"+smartHome.getId()+",\"name\":\""+smartHome.getName()+"\"}";
+        System.out.println("{\"id\":" + smartHome.getId() + ",\"name\":\"" + smartHome.getName() + "\"}");
+        return "{\"id\":" + smartHome.getId() + ",\"name\":\"" + smartHome.getName() + "\"}";
     }
 
 }

@@ -50,11 +50,11 @@ public class Device {
     }
 
     public void setInBroker_id(Integer id) {
-        this.inBroker_id=id;
+        this.inBroker_id = id;
     }
 
     @ManyToOne
-    @JoinColumn(name="smartHome_id")
+    @JoinColumn(name = "smartHome_id")
     public SmartHome getSmarthome() {
         return smarthome;
     }
@@ -68,32 +68,36 @@ public class Device {
         return "Device{" + "id=" + id + ", name=" + name + ", smarthome=" + smarthome + '}';
     }
 
-    @OneToMany(mappedBy = "device", cascade=CascadeType.REMOVE)
+    @OneToMany(mappedBy = "device", cascade = CascadeType.REMOVE)
     @JsonIgnore
-    public List<Log> getLogs(){
+    public List<Log> getLogs() {
         return this.logs;
     }
-    public void setLogs(List<Log> logs){
-        this.logs=logs;
+
+    public void setLogs(List<Log> logs) {
+        this.logs = logs;
     }
 
-    public void addListLogs(Log l){ this.logs.add(l); }
+    public void addListLogs(Log l) {
+        this.logs.add(l);
+    }
 
-    @OneToMany(mappedBy = "device", cascade=CascadeType.REMOVE)
+    @OneToMany(mappedBy = "device", cascade = CascadeType.REMOVE)
     @JsonIgnore
     public List<Notification> getList_notifications() {
         List<Notification> n = this.list_notifications;
         return n;
     }
+
     public void setList_notifications(List<Notification> list_devices) {
         this.list_notifications = list_devices;
     }
 
-    public void addListNotification(Notification n){
+    public void addListNotification(Notification n) {
         this.list_notifications.add(n);
     }
 
-    public void clearNotifications(){
+    public void clearNotifications() {
         this.list_notifications = new ArrayList<>();
     }
 }

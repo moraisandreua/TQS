@@ -48,7 +48,7 @@ public class CarControllerTemplateIT {
     }
 
     @Test
-    public void givenEmployees_whenGetCars_thenStatus200()  {
+    public void givenEmployees_whenGetCars_thenStatus200() {
         createTestCar("Volkswagen", "E-Tron");
         createTestCar("Mercedes", "CLS 320");
 

@@ -12,6 +12,7 @@ import ua.mysmArthome.repository.DeviceRepository;
 import ua.mysmArthome.repository.LogsRepository;
 import ua.mysmArthome.repository.SmartHomeRepository;
 import ua.mysmArthome.repository.UserRepository;
+
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
@@ -20,7 +21,7 @@ import java.time.LocalDateTime;
 public class DeviceController {
     @Autowired
     private DeviceRepository deviceRepository;
-    
+
     @Autowired
     private SmartHomeRepository smartHomeRepository;
 
@@ -42,15 +43,15 @@ public class DeviceController {
     // não sei bem
     // além disto, estes comentários estão "duplicados"
     // ou seja, também deve dar algum aviso no Sonnar
-    public String getLogsbyId(@PathVariable(value="id") int id) throws ResourceNotFoundException {
+    public String getLogsbyId(@PathVariable(value = "id") int id) throws ResourceNotFoundException {
         Device device = deviceRepository.findDeviceByInBrokerId(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Device "+id+" not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Device " + id + " not found"));
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         String retorno = "{\"logs\":\"";
         List<Log> logs = device.getLogs();
-        for(Log l : logs){
-            retorno+="<p>[LOG AT "+dtf.format(l.getData())+"] "+l.getValue()+"</p>";
+        for (Log l : logs) {
+            retorno += "<p>[LOG AT " + dtf.format(l.getData()) + "] " + l.getValue() + "</p>";
         }
         retorno += "\"}";
         return retorno;
@@ -66,22 +67,22 @@ public class DeviceController {
     // não sei bem
     // além disto, estes comentários estão "duplicados"
     // ou seja, também deve dar algum aviso no Sonnar
-    public String getDevicebyId(@PathVariable(value="id") int id) throws ResourceNotFoundException {
+    public String getDevicebyId(@PathVariable(value = "id") int id) throws ResourceNotFoundException {
         Device device = deviceRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Device "+id+" not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Device " + id + " not found"));
 
         int borker_id = device.getInBroker_id();
         String retorno = "{\"device\":[";
-        String idd="{\"id\":\""+borker_id+"\"}";
+        String idd = "{\"id\":\"" + borker_id + "\"}";
         String status = producer.createWithProperty("get", String.valueOf(borker_id), "status");
         String type = producer.createWithProperty("get", String.valueOf(borker_id), "type");
         String active = producer.createWithProperty("get", String.valueOf(borker_id), "active_since");
 
-        retorno+=idd + "," + status + "," + type + "," + active + "]}";
+        retorno += idd + "," + status + "," + type + "," + active + "]}";
         System.out.println(retorno);
         return retorno;
     }
-    
+
     @PostMapping("/post")
     // faz coisas
     // muitas coisas
@@ -92,10 +93,10 @@ public class DeviceController {
     // não sei bem
     // além disto, estes comentários estão "duplicados"
     // ou seja, também deve dar algum aviso no Sonnar
-    public Device createDevice(Integer id_home, String device_id) throws ResourceNotFoundException{
-        SmartHome sm = smartHomeRepository.findById(id_home).orElseThrow(()-> new ResourceNotFoundException("Error"));
+    public Device createDevice(Integer id_home, String device_id) throws ResourceNotFoundException {
+        SmartHome sm = smartHomeRepository.findById(id_home).orElseThrow(() -> new ResourceNotFoundException("Error"));
         Device d = new Device();
-        Integer id=Integer.parseInt(device_id);
+        Integer id = Integer.parseInt(device_id);
         d.setInBroker_id(id);
         d.setName("");
         d.setSmarthome(sm);
@@ -105,7 +106,7 @@ public class DeviceController {
 
         Log l = new Log();
         l.setDevice(d);
-        l.setValue("<p>[LOG AT "+getCurrentTime()+"] Device Found!</p>");
+        l.setValue("<p>[LOG AT " + getCurrentTime() + "] Device Found!</p>");
         l.setData(LocalDateTime.now());
         logsRepository.save(l);
 
@@ -138,34 +139,34 @@ public class DeviceController {
         // get user homes
 
         List<SmartHome> user_homes = new ArrayList<>();
-        for(Integer id : activeUser.getHomes_id()){
+        for (Integer id : activeUser.getHomes_id()) {
             user_homes.add(smartHomeRepository.findHomeById(id).orElseThrow(() -> new ResourceNotFoundException("Home " + id + " not found")));
         }
 
         //get all devices
         List<Device> devices = new ArrayList<>();
-        for(SmartHome sm : user_homes){
-            for(Device d : sm.getList_devices()){
+        for (SmartHome sm : user_homes) {
+            for (Device d : sm.getList_devices()) {
                 devices.add(d);
             }
         }
         //create appropriate string for the devices
-        String devicesStr="";
-        Integer counter=0;
-        for (Device d : devices){
+        String devicesStr = "";
+        Integer counter = 0;
+        for (Device d : devices) {
             counter++;
-            devicesStr+="{\"id\":\""+d.getId()+"\",\"name\":\""+d.getName()+"\"}";
-            if(counter< devices.size()){
-                devicesStr+=",";
+            devicesStr += "{\"id\":\"" + d.getId() + "\",\"name\":\"" + d.getName() + "\"}";
+            if (counter < devices.size()) {
+                devicesStr += ",";
             }
         }
         //
-        return "{\"devices\":["+devicesStr+"]}";
+        return "{\"devices\":[" + devicesStr + "]}";
 
         //return producer.createMessage("");
-        
+
     }
-    
+
     @CrossOrigin
     @PostMapping("/turnOn")
     // faz coisas
@@ -177,7 +178,7 @@ public class DeviceController {
     // não sei bem
     // além disto, estes comentários estão "duplicados"
     // ou seja, também deve dar algum aviso no Sonnar
-    public String turnOnDevice(@RequestParam(value = "id",required = true) String deviceId) throws ResourceNotFoundException {
+    public String turnOnDevice(@RequestParam(value = "id", required = true) String deviceId) throws ResourceNotFoundException {
         Integer id = Integer.valueOf(deviceId);
         Device d = deviceRepository.findDeviceByInBrokerId(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Device not found for this id :: " + deviceId));
@@ -191,7 +192,7 @@ public class DeviceController {
 
         deviceRepository.save(d);
 
-        return producer.createMessage("turnOn",deviceId);
+        return producer.createMessage("turnOn", deviceId);
 
     }
 
@@ -206,7 +207,7 @@ public class DeviceController {
     // não sei bem
     // além disto, estes comentários estão "duplicados"
     // ou seja, também deve dar algum aviso no Sonnar
-    public String turnOffDevice(@RequestParam(value = "id",required = true) String deviceId) throws ResourceNotFoundException {
+    public String turnOffDevice(@RequestParam(value = "id", required = true) String deviceId) throws ResourceNotFoundException {
         Integer id = Integer.valueOf(deviceId);
         Device d = deviceRepository.findDeviceByInBrokerId(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Device not found for this id :: " + deviceId));
@@ -220,7 +221,7 @@ public class DeviceController {
 
         deviceRepository.save(d);
 
-        return producer.createMessage("turnOff",deviceId);
+        return producer.createMessage("turnOff", deviceId);
     }
 
     @CrossOrigin
@@ -234,8 +235,8 @@ public class DeviceController {
     // não sei bem
     // além disto, estes comentários estão "duplicados"
     // ou seja, também deve dar algum aviso no Sonnar
-    public String BrightnessOfDevice(@RequestParam(value = "id",required = true)  String deviceId){
-        return producer.createMessage("brightness",deviceId); //right now brightness is random
+    public String BrightnessOfDevice(@RequestParam(value = "id", required = true) String deviceId) {
+        return producer.createMessage("brightness", deviceId); //right now brightness is random
     }
 
     @CrossOrigin
@@ -250,14 +251,14 @@ public class DeviceController {
     // além disto, estes comentários estão "duplicados"
     // ou seja, também deve dar algum aviso no Sonnar
     public String hardcheck(@PathVariable(value = "username") String username) throws ResourceNotFoundException {
-        String id="";
+        String id = "";
         Integer home_id = userRepository.findHomesByUsername(username).getHomes_id().get(0);
-        id=String.valueOf(home_id);
+        id = String.valueOf(home_id);
 
         // clean previous devices
         SmartHome sm = smartHomeRepository.findHomeById(home_id).orElseThrow(() -> new ResourceNotFoundException("Home " + home_id + " not found"));
 
-        for(Device d : sm.getList_devices()){
+        for (Device d : sm.getList_devices()) {
             deviceRepository.delete(d);
         }
 
@@ -266,14 +267,15 @@ public class DeviceController {
         return retorno;
     }
 
-    public String getCurrentTime(){
+    public String getCurrentTime() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
     }
 
 
-    String retorno="";
+    String retorno = "";
+
     @CrossOrigin
     @GetMapping("/info/{id}")
     // faz coisas
@@ -286,7 +288,7 @@ public class DeviceController {
     // além disto, estes comentários estão "duplicados"
     // ou seja, também deve dar algum aviso no Sonnar
     public String getDeviceInfo(@PathVariable(value = "id") String id) throws ResourceNotFoundException {
-        Integer deviceId=Integer.valueOf(id);
+        Integer deviceId = Integer.valueOf(id);
         Device device = deviceRepository.findDeviceByInBrokerId(deviceId)
                 .orElseThrow(() -> new ResourceNotFoundException("Device not found for this id : " + deviceId));
 
@@ -294,7 +296,7 @@ public class DeviceController {
         JSONObject obj = new JSONObject(d_type);
         d_type = obj.getString("type");
 
-        int index = device.getLogs().size()-1;
+        int index = device.getLogs().size() - 1;
         String curr_value = device.getLogs().get(index).getValue();
 
         String d_status = producer.createWithProperty("get", id, "status");
@@ -306,23 +308,23 @@ public class DeviceController {
         d_act = obj.getString("active_since");
 
         List<Log> d_logs = device.getLogs();
-        List<Log> d_logs_temp =new ArrayList<>();
-        for(Log l : d_logs)
-            if(!l.getValue().contains("Device") && !l.getValue().contains("status"))
+        List<Log> d_logs_temp = new ArrayList<>();
+        for (Log l : d_logs)
+            if (!l.getValue().contains("Device") && !l.getValue().contains("status"))
                 d_logs_temp.add(l);
 
         Collections.reverse(d_logs_temp);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         //type, current_value, status, active_since, logs
 
-        String type = "\"type\": \""+d_type+"\"";
-        String value = "\"current_value\": \""+curr_value+"\"";
-        String status = "\"status\": \""+d_status+"\"";
-        String active_since = "\"active_since\": \""+d_act+"\"";
-        retorno += "{ "+type+", "+value+", "+status+", "+active_since+", \"logs\":\"";
+        String type = "\"type\": \"" + d_type + "\"";
+        String value = "\"current_value\": \"" + curr_value + "\"";
+        String status = "\"status\": \"" + d_status + "\"";
+        String active_since = "\"active_since\": \"" + d_act + "\"";
+        retorno += "{ " + type + ", " + value + ", " + status + ", " + active_since + ", \"logs\":\"";
 
-        for(Log l : d_logs_temp){
-            retorno+="<p>[LOG AT "+dtf.format(l.getData())+"] "+l.getValue()+"</p>";
+        for (Log l : d_logs_temp) {
+            retorno += "<p>[LOG AT " + dtf.format(l.getData()) + "] " + l.getValue() + "</p>";
         }
         retorno += "\"}";
 
@@ -341,12 +343,12 @@ public class DeviceController {
     // além disto, estes comentários estão "duplicados"
     // ou seja, também deve dar algum aviso no Sonnar
     public String getDeviceGraphs(@PathVariable(value = "id") String id) throws ResourceNotFoundException {
-        String retorno="";
+        String retorno = "";
 
-        Integer deviceId=Integer.valueOf(id);
+        Integer deviceId = Integer.valueOf(id);
         Device device = deviceRepository.findDeviceByInBrokerId(deviceId)
                 .orElseThrow(() -> new ResourceNotFoundException("Device not found for this id : " + deviceId));
-        
+
         List<Log> d_logs = device.getLogs();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("HH");
@@ -355,16 +357,16 @@ public class DeviceController {
 
         int count = 0;
         int expected_length = d_logs.size();
-        for(Log l : d_logs){
-            if(l.getValue().contains("status") || l.getValue().contains("Device Found")){
+        for (Log l : d_logs) {
+            if (l.getValue().contains("status") || l.getValue().contains("Device Found")) {
                 expected_length--;
                 continue;
             }
             count++;
 
-            retorno+="{\"data\":\""+dtf.format(l.getData())+"\",\"daytime\":\""+dtf2.format(l.getData())+":00\", \"value\":"+l.getValue()+"}";
-            if(count<expected_length )
-                retorno+=",";
+            retorno += "{\"data\":\"" + dtf.format(l.getData()) + "\",\"daytime\":\"" + dtf2.format(l.getData()) + ":00\", \"value\":" + l.getValue() + "}";
+            if (count < expected_length)
+                retorno += ",";
         }
         retorno += "]}";
 

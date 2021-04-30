@@ -1,4 +1,5 @@
 package tqs.lab2;
+
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.mockito.Mock;
@@ -21,7 +22,7 @@ public class StocksPortefolioTest {
     StocksPortefolio portefolio;
 
     @Test
-    void getTotalValue(){
+    void getTotalValue() {
         // get the mock
         //IStockMarket market = mock(IStockMarket.class)
         // inject mock
@@ -41,7 +42,7 @@ public class StocksPortefolioTest {
     }
 
     @Test
-    void getTotalValue2(){
+    void getTotalValue2() {
         // get the mock
         //IStockMarket market = mock(IStockMarket.class)
         // inject mock

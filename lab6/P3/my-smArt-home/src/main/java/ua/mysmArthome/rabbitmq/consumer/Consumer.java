@@ -24,8 +24,8 @@ public class Consumer {
     private HashMap<String, ArrayList<String>> logs;
 
     public Consumer() throws ResourceNotFoundException {
-        notifications = new HashMap<String,ArrayList<String>>();
-        logs = new HashMap<String,ArrayList<String>>();
+        notifications = new HashMap<String, ArrayList<String>>();
+        logs = new HashMap<String, ArrayList<String>>();
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("rabbitmq");
@@ -45,14 +45,14 @@ public class Consumer {
         consumeQueue();
     }
 
-    public void consumeQueue() throws ResourceNotFoundException{
+    public void consumeQueue() throws ResourceNotFoundException {
         try {
             channel.exchangeDeclare(EXCHANGE, "fanout");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        String queueName="";
+        String queueName = "";
         try {
             queueName = channel.queueDeclare().getQueue();
         } catch (IOException e) {
@@ -69,41 +69,41 @@ public class Consumer {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
             JSONObject obj = new JSONObject(message);
-            String not="";
-            boolean harmful=false;
+            String not = "";
+            boolean harmful = false;
             double val;
-            String device_id=obj.getString("id");
+            String device_id = obj.getString("id");
 
-            switch(obj.getJSONObject("property").getString("name")){
+            switch (obj.getJSONObject("property").getString("name")) {
 
                 case "humidity":
                     val = Double.parseDouble(obj.getJSONObject("property").getString("value"));
-                    if(val<15 || val>50) {
+                    if (val < 15 || val > 50) {
                         not += "harmful " + obj.getJSONObject("property").getString("value");
-                        harmful=true;
-                    }else
-                        not+="normal condition";
+                        harmful = true;
+                    } else
+                        not += "normal condition";
 
                     addLog(device_id, obj.getJSONObject("property").getString("value"));
                     break;
 
                 case "termal":
                     val = Double.parseDouble(obj.getJSONObject("property").getString("value"));
-                    if(val<10 || val>35){
-                        not+="harmful "+obj.getJSONObject("property").getString("value") + "º";
-                        harmful=true;
-                    }else
-                        not+="normal condition";
+                    if (val < 10 || val > 35) {
+                        not += "harmful " + obj.getJSONObject("property").getString("value") + "º";
+                        harmful = true;
+                    } else
+                        not += "normal condition";
 
                     addLog(device_id, obj.getJSONObject("property").getString("value"));
                     break;
 
                 case "proximity":
                     val = Double.parseDouble(obj.getJSONObject("property").getString("value"));
-                    if(val<20){
-                        not+="harmful "+obj.getJSONObject("property").getString("value")+" meters from sensor";
-                        harmful=true;
-                    }else {
+                    if (val < 20) {
+                        not += "harmful " + obj.getJSONObject("property").getString("value") + " meters from sensor";
+                        harmful = true;
+                    } else {
                         not += "normal condition";
                     }
                     addLog(device_id, obj.getJSONObject("property").getString("value"));
@@ -111,33 +111,34 @@ public class Consumer {
                     break;
 
                 case "alarm":
-                    if(obj.getJSONObject("property").getString("value").equals("True")){
-                        not+="harmful, alarm is ringing";
-                        harmful=true;
+                    if (obj.getJSONObject("property").getString("value").equals("True")) {
+                        not += "harmful, alarm is ringing";
+                        harmful = true;
                         addLog(device_id, "true");
-                    }else {
+                    } else {
                         not += "normal condition";
                         addLog(device_id, "false");
                     }
                     break;
 
                 case "door":
-                    if(obj.getJSONObject("property").getString("value").equals("True")){
-                        not+="harmful, door bell is ringing";
-                        harmful=true;
+                    if (obj.getJSONObject("property").getString("value").equals("True")) {
+                        not += "harmful, door bell is ringing";
+                        harmful = true;
                         addLog(device_id, "true");
-                    }else {
+                    } else {
                         not += "normal condition";
                         addLog(device_id, "false");
                     }
 
                     break;
 
-                default:break;
+                default:
+                    break;
             }
 
-            if(harmful){
-                if (!notifications.containsKey(obj.getString("id")) )
+            if (harmful) {
+                if (!notifications.containsKey(obj.getString("id")))
                     notifications.put(obj.getString("id"), new ArrayList<>());
 
                 notifications.get(obj.getString("id")).add(not);
@@ -151,11 +152,11 @@ public class Consumer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
     }
 
-    public void addLog(String device_id, String value){
-        if (!logs.containsKey(device_id) )
+    public void addLog(String device_id, String value) {
+        if (!logs.containsKey(device_id))
             logs.put(device_id, new ArrayList<>());
 
         logs.get(device_id).add(value);

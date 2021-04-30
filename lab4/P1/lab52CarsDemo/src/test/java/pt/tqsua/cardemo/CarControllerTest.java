@@ -26,7 +26,7 @@ public class CarControllerTest {
 
     @Test
     public void whenGetCar_theReturnCar() throws Exception {
-        given( carService.getCarDetails( anyString())).willReturn( new Car("prius", "toyota"));
+        given(carService.getCarDetails(anyString())).willReturn(new Car("prius", "toyota"));
 
         servlet.perform(MockMvcRequestBuilders.get("/cars/prius"))
                 .andExpect(status().isOk())
@@ -37,7 +37,7 @@ public class CarControllerTest {
     public void whenGetInexistingCar_theReturnNothing() throws Exception {
         String not_valid_car = "not_valid_car";
 
-        given( carService.getCarDetails(not_valid_car)).willThrow( new CarNotFoundException() );
+        given(carService.getCarDetails(not_valid_car)).willThrow(new CarNotFoundException());
 
         servlet.perform(MockMvcRequestBuilders.get("/cars/".concat(not_valid_car)))
                 .andExpect(status().isNotFound());

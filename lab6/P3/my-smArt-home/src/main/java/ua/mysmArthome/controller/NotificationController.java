@@ -1,6 +1,7 @@
 package ua.mysmArthome.controller;
 
 import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ua.mysmArthome.exception.ResourceNotFoundException;
@@ -37,15 +38,16 @@ public class NotificationController {
     @CrossOrigin
     @GetMapping("/getAll/{username}")
     public String getAll(@PathVariable(value = "username") String username) throws ResourceNotFoundException {
-        loadNotifications();loadLogs();
+        loadNotifications();
+        loadLogs();
         Integer home_id = userRepository.findHomesByUsername(username).getHomes_id().get(0);
 
         // obtain all notifications from devices
         List<Notification> notificacoes = new ArrayList<>();
         SmartHome sm = smartHomeRepository.findHomeById(home_id).orElseThrow(() -> new ResourceNotFoundException("Home " + home_id + " not found"));
 
-        for(Device d : sm.getList_devices()){
-            for(Notification n : d.getList_notifications()){
+        for (Device d : sm.getList_devices()) {
+            for (Notification n : d.getList_notifications()) {
                 notificacoes.add(n);
             }
         }
@@ -53,17 +55,17 @@ public class NotificationController {
         // create return message
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         String retorno = "{\"notificacoes\":[";
-        int counter=0;
-        for(Notification n : notificacoes){
+        int counter = 0;
+        for (Notification n : notificacoes) {
             counter++;
 
-            retorno+="{\"deviceId\":\""+String.valueOf(n.getDevice().getInBroker_id())+"\", \"value\":\""+n.getValue()+"\", \"date\":\""+dtf.format(n.getData())+"\"}";
+            retorno += "{\"deviceId\":\"" + String.valueOf(n.getDevice().getInBroker_id()) + "\", \"value\":\"" + n.getValue() + "\", \"date\":\"" + dtf.format(n.getData()) + "\"}";
 
-            if(counter<notificacoes.size())
-                retorno+=",";
+            if (counter < notificacoes.size())
+                retorno += ",";
         }
-        retorno+="]}";
-        for(Device d : sm.getList_devices()){
+        retorno += "]}";
+        for (Device d : sm.getList_devices()) {
             d.clearNotifications();
             deviceRepository.save(d);
             notificationRepository.deleteAllByDevice(d);
@@ -76,10 +78,10 @@ public class NotificationController {
 
         Map<String, ArrayList<String>> notifications = consumer.getNotifications();
 
-        for(String device_id : notifications.keySet()){
-            Device d = deviceRepository.findDeviceByInBrokerId(Integer.valueOf(device_id)).orElseThrow(() -> new ResourceNotFoundException("Device "+device_id+" not found"));
+        for (String device_id : notifications.keySet()) {
+            Device d = deviceRepository.findDeviceByInBrokerId(Integer.valueOf(device_id)).orElseThrow(() -> new ResourceNotFoundException("Device " + device_id + " not found"));
 
-            for(String s : notifications.get(device_id)){
+            for (String s : notifications.get(device_id)) {
                 Notification n = new Notification();
                 n.setData(LocalDateTime.now());
                 n.setDevice(d);
@@ -97,10 +99,10 @@ public class NotificationController {
 
         Map<String, ArrayList<String>> logs = consumer.getLogs();
 
-        for(String device_id : logs.keySet()){
-            Device d = deviceRepository.findDeviceByInBrokerId(Integer.valueOf(device_id)).orElseThrow(() -> new ResourceNotFoundException("Device "+device_id+" not found"));
+        for (String device_id : logs.keySet()) {
+            Device d = deviceRepository.findDeviceByInBrokerId(Integer.valueOf(device_id)).orElseThrow(() -> new ResourceNotFoundException("Device " + device_id + " not found"));
 
-            for(String s : logs.get(device_id)){
+            for (String s : logs.get(device_id)) {
                 Log l = new Log();
                 l.setDevice(d);
                 l.setData(LocalDateTime.now());
@@ -114,7 +116,7 @@ public class NotificationController {
         }
     }
 
-    public LocalDateTime getCurrentTime(){
+    public LocalDateTime getCurrentTime() {
         //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         //return dtf.format(now);

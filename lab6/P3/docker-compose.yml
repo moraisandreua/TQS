@@ -11,14 +11,14 @@ services:
       MYSQL_PASSWORD: 'root'
     ports:
       - '3306:3306'
-    #volumes:
+      #volumes:
       #- db-data1:/var/lib/mysql
       #- ./mysql.sql:/docker-entrypoint-initdb.d/mysql.sql
     #expose:
     # opens port 3306 on the container
     #- '3306'
 
-  
+
   rabbitmq:
     image: rabbitmq:3-management
     hostname: rabbitmq
@@ -72,7 +72,7 @@ services:
       #- sensing
     volumes:
       - ./src:/etc/share/nginx/html
-    environment: 
+    environment:
       SERVER_IP: backend
 
   #nginx:

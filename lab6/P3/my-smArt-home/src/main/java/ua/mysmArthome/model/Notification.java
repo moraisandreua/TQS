@@ -56,7 +56,7 @@ public class Notification {
     }
 
     @ManyToOne
-    @JoinColumn(name="device_id")
+    @JoinColumn(name = "device_id")
     public Device getDevice() {
         return this.device;
     }

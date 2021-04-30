@@ -1,6 +1,7 @@
 package euromillions;
 
 import java.util.ArrayList;
+
 /**
  * Models an Euromillions draw. Contains the solution and allows to find
  * matches.

@@ -73,7 +73,7 @@ public class User {
         this.password = password;
     }
 
-    @Column(name = "token",nullable = false)
+    @Column(name = "token", nullable = false)
     public String getToken() {
         return token;
     }

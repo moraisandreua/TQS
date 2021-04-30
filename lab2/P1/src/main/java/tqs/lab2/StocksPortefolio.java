@@ -8,12 +8,12 @@ public class StocksPortefolio {
     private IStockMarket marketService;
     private List<Stock> carteira = new ArrayList<>();
 
-    private IStockMarket getMarketService(){
+    private IStockMarket getMarketService() {
         return this.marketService;
     }
 
-    private void setMarketService(IStockMarket ms){
-        this.marketService=ms;
+    private void setMarketService(IStockMarket ms) {
+        this.marketService = ms;
     }
 
     public String getName() {
@@ -24,16 +24,16 @@ public class StocksPortefolio {
         this.name = name;
     }
 
-    public Double getTotalValue(){
+    public Double getTotalValue() {
         Double total = 0.0;
-        for(Stock s : carteira){
+        for (Stock s : carteira) {
             total += marketService.getPrice(s.getName()) * s.getQuantity();
         }
 
         return total;
     }
 
-    public void addStock(Stock s){
+    public void addStock(Stock s) {
         this.carteira.add(s);
     }
 }

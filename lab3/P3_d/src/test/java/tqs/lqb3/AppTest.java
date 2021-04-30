@@ -15,20 +15,19 @@ import io.github.bonigarcia.seljup.SeleniumJupiter;
  * Unit test for simple App.
  */
 @ExtendWith(SeleniumJupiter.class)
-public class AppTest 
-{
-    
+public class AppTest {
+
     @Test
-    void testChrome(@DockerBrowser(type=CHROME) RemoteWebDriver driver){
+    void testChrome(@DockerBrowser(type = CHROME) RemoteWebDriver driver) {
         driver.get("https://bonigarcia.github.io/selenium-jupiter/");
 
         assertThat(driver.getTitle(), containsString("JUnit 5 extension for Selenium"));
     }
 
     @Test
-    void testChromeWithVersion(@DockerBrowser(type=CHROME, version="88.0") RemoteWebDriver driver){
+    void testChromeWithVersion(@DockerBrowser(type = CHROME, version = "88.0") RemoteWebDriver driver) {
         driver.get("https://bonigarcia.github.io/selenium-jupiter");
-        
+
         assertThat(driver.getTitle(), containsString("JUnit 5 extension for Selenium"));
     }
 }

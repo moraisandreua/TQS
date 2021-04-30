@@ -30,17 +30,19 @@ public class CarServiceTest {
 
     @Test
     public void getCarDetails_returnsCarInfo() {
-        given( carRepository.findByName("prius")).willReturn( new Car("prius", "toyota"));
-        Car car = sutCarService.getCarDetails( "prius");
-        Assertions.assertThat( car.getName()).isEqualTo("prius");
+        given(carRepository.findByName("prius")).willReturn(new Car("prius", "toyota"));
+        Car car = sutCarService.getCarDetails("prius");
+        Assertions.assertThat(car.getName()).isEqualTo("prius");
     }
 
     @Test
     public void getCarDetails_whenDoesntExist_returnsException() {
         String nonExisting = "bad_car_name";
-        given( carRepository.findByName( nonExisting )).willThrow(CarNotFoundException.class);
+        given(carRepository.findByName(nonExisting)).willThrow(CarNotFoundException.class);
 
-        Assertions.assertThatThrownBy( () -> { sutCarService.getCarDetails( nonExisting); }).isInstanceOf( CarNotFoundException.class );
+        Assertions.assertThatThrownBy(() -> {
+            sutCarService.getCarDetails(nonExisting);
+        }).isInstanceOf(CarNotFoundException.class);
     }
 
 }

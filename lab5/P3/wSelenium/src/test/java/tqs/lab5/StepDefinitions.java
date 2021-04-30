@@ -25,9 +25,9 @@ public class StepDefinitions {
 
     @Given("I am on the Google search page")
     public void i_am_on_the_google_search_page() {
-        System.setProperty("webdriver.gecko.driver","/opt/WebDriver/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "/opt/WebDriver/geckodriver");
         FirefoxOptions options = new FirefoxOptions().addPreference("browser.startup.homepage", "https://www.ua.pt");
-        driver= new FirefoxDriver(options);
+        driver = new FirefoxDriver(options);
         driver.get("https://www.google.com/");
     }
 
@@ -39,9 +39,10 @@ public class StepDefinitions {
         // Now submit the form. WebDriver will find the form for us from the element
         element.submit();
     }
+
     @Then("the page title should start with {string}")
     public void the_page_title_should_start_with(String string) {
-        new WebDriverWait(driver,10L).until(new ExpectedCondition<Boolean>() {
+        new WebDriverWait(driver, 10L).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getTitle().toLowerCase().startsWith(string);
             }

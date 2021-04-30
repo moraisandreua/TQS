@@ -15,8 +15,7 @@ public class CarService {
     }
 
 
-
     public Car getCarDetails(String key) {
-        return  carRepository.findByName( key);
+        return carRepository.findByName(key);
     }
 }

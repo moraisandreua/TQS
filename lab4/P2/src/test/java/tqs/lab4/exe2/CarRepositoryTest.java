@@ -23,7 +23,7 @@ public class CarRepositoryTest {
         entityManager.persistAndFlush(alex); //ensure data is persisted at this point
 
         Car found = carRepository.findByModel(alex.getModel());
-        assertThat( found ).isEqualTo(alex);
+        assertThat(found).isEqualTo(alex);
     }
 
     @Test

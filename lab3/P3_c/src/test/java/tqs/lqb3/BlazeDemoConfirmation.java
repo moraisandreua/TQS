@@ -11,9 +11,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BlazeDemoConfirmation {
 
-  WebDriver driver;
+    WebDriver driver;
 
-  public BlazeDemoConfirmation(WebDriver driver) {
-    this.driver = driver;
-  }
+    public BlazeDemoConfirmation(WebDriver driver) {
+        this.driver = driver;
+    }
 }

@@ -16,11 +16,12 @@ public class Car {
     private String maker;
     private String model;
 
-    public Car(){ }
+    public Car() {
+    }
 
     public Car(String model, String maker) {
-        this.model=model;
-        this.maker=maker;
+        this.model = model;
+        this.maker = maker;
     }
 
     @Override
@@ -40,7 +41,7 @@ public class Car {
                 && Objects.equals(model, car.model);
     }
 
-    public int hashcode(){
+    public int hashcode() {
         return 1;
     }
 
@@ -52,12 +53,12 @@ public class Car {
         return maker;
     }
 
-    public String getModel(){
+    public String getModel() {
         return model;
     }
 
-    public void setCardId(long id){
-        this.carId=id;
+    public void setCardId(long id) {
+        this.carId = id;
     }
 
     public void setMaker(String maker) {
@@ -68,8 +69,8 @@ public class Car {
         this.model = model;
     }
 
-    public String toString(){
-        return "("+this.carId+")" + this.maker + " " + this.model;
+    public String toString() {
+        return "(" + this.carId + ")" + this.maker + " " + this.model;
     }
 
 }

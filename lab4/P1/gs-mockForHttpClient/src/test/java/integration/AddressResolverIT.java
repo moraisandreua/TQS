@@ -17,7 +17,7 @@ public class AddressResolverIT {
 
 
     @BeforeEach
-    public void init(){
+    public void init() {
     }
 
     @Test

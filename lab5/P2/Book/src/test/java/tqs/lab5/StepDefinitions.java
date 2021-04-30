@@ -4,9 +4,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.ParameterType;
+
 import java.time.*;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
+
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,21 +36,25 @@ public class StepDefinitions {
         Book b = new Book(string, string2, new SimpleDateFormat("dd/MM/yyyy").parse(int3 + "/" + int2 + "/" + int1));
         library.addBook(b);
     }
+
     @When("the customer searches for book which author is {string}")
     public void the_customer_searches_for_book_which_author_is(String string) {
         result = library.findBooks(string);
     }
+
     @Then("{int} books should have been found")
     public void books_should_have_been_found(Integer int1) {
         assertThat(result.size(), equalTo(int1));
     }
+
     @Then("Book {int} should have the title {string}")
     public void book_should_have_the_title(Integer int1, String string) {
         assertThat(result.get(int1 - 1).getTitle(), equalTo(string));
     }
+
     @When("the customer searches for books published between {int} and {int}")
     public void the_customer_searches_for_books_published_between_and(Integer int1, Integer int2) throws Exception {
-        result = library.findBooks( new SimpleDateFormat("dd/MM/yyyy").parse("01/01/" + int1), new SimpleDateFormat("dd/MM/yyyy").parse("01/01/" + int2));
+        result = library.findBooks(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/" + int1), new SimpleDateFormat("dd/MM/yyyy").parse("01/01/" + int2));
     }
 
     /* Acabei por não usar, mas fica aqui ao exemplo de utilização
@@ -70,10 +77,10 @@ class Book {
     private final String author;
     private final Date published;
 
-    public Book(String title, String author, Date published){
-        this.title=title;
-        this.author=author;
-        this.published=published;
+    public Book(String title, String author, Date published) {
+        this.title = title;
+        this.author = author;
+        this.published = published;
     }
     // constructors, getter, setter ommitted
 

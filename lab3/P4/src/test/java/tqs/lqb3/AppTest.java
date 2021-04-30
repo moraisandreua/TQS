@@ -15,20 +15,23 @@ public class AppTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
+
     @BeforeEach
     public void setUp() {
-        System.setProperty("webdriver.gecko.driver","/opt/WebDriver/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "/opt/WebDriver/geckodriver");
         FirefoxOptions options = new FirefoxOptions().addPreference("browser.startup.homepage", "https://www.ua.pt");
-        driver=new FirefoxDriver(options);
+        driver = new FirefoxDriver(options);
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
     }
+
     @AfterEach
     public void tearDown() {
         driver.quit();
     }
+
     @Test
-    public void testTopTal(){
+    public void testTopTal() {
         HomePage home = new HomePage(driver);
         home.clickOnDeveloperApplyButton();
     }

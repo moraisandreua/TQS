@@ -19,13 +19,13 @@ public class CarRepositoryTest {
     private TestEntityManager entityManager; //actual insert, forces use of hibernate
     // direct use of the respository, does not reproduce the actual use of the bd
 
-   @Test
-   public void getCar_retursCarDetails() {
-       Car saverCar = entityManager.persistAndFlush( new Car("prius", "toyota"));
+    @Test
+    public void getCar_retursCarDetails() {
+        Car saverCar = entityManager.persistAndFlush(new Car("prius", "toyota"));
 
-       Car car = repository.findByName( "prius");
+        Car car = repository.findByName("prius");
 
-       Assertions.assertThat( car.getName()).isEqualTo( saverCar.getName());
+        Assertions.assertThat(car.getName()).isEqualTo(saverCar.getName());
     }
 
 }

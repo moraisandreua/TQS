@@ -8,6 +8,7 @@ package ua.mysmArthome.controller;
 import java.util.List;
 import java.util.Random;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -111,7 +112,7 @@ public class UserController {
     @GetMapping("/profile/{id}")
     public String getProfile(@PathVariable(value = "id") String id) throws ResourceNotFoundException {
         //for profile
-        String retorno="";
+        String retorno = "";
 
         User user = userRepository.findUserByUsername(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Device not found for this id : " + id));
@@ -120,7 +121,7 @@ public class UserController {
         String username = user.getUsername();
         String phone = user.getPhone();
 
-        retorno += "{\"username\":\""+username+"\",\"email\":\""+email+"\",\"phone\":\""+phone+"\"}";
+        retorno += "{\"username\":\"" + username + "\",\"email\":\"" + email + "\",\"phone\":\"" + phone + "\"}";
 
         return retorno;
     }

@@ -11,10 +11,12 @@ import jdk.jfr.Timestamp;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -26,23 +28,24 @@ import io.github.bonigarcia.seljup.SeleniumJupiter;
  */
 
 @ExtendWith(SeleniumJupiter.class)
-public class AppTest 
-{
+public class AppTest {
     /**
      * Rigorous Test :-)
      */
     FirefoxDriver driver;
 
-    public AppTest(FirefoxDriver driver){ this.driver = driver; }
+    public AppTest(FirefoxDriver driver) {
+        this.driver = driver;
+    }
 
     @Test
-    void testWithOneFirefox(){
+    void testWithOneFirefox() {
         driver.get("http://www.ua.pt");
         assertThat(driver.getTitle(), containsString("Universidade de Aveiro"));
     }
 
     @Test
-    void testWithTwoFirefoxs(FirefoxDriver driver1, ChromeDriver driver2){
+    void testWithTwoFirefoxs(FirefoxDriver driver1, ChromeDriver driver2) {
         driver1.get("http://www.seleniumhq.org/");
         driver2.get("http://www.junit.org/junit5/");
         assertThat(driver1.getTitle(), startsWith("Selenium"));
@@ -50,7 +53,7 @@ public class AppTest
     }
 
     @Test
-    void testWithHeadless(HtmlUnitDriver driver){
+    void testWithHeadless(HtmlUnitDriver driver) {
         driver.get("https://www.ua.pt");
         assertThat(driver.getTitle(), containsString("Universidade de Aveiro"));
     }

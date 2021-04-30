@@ -53,14 +53,14 @@ public class Dip {
             int candidate = generator.nextInt(MAX_RANGE_NUMBERS) + 1;
             if (!randomDip.getNumbersColl().contains(candidate)) {
                 randomDip.getNumbersColl().add(candidate);
-        
+
             }
         }
         for (int i = 0; i < MAX_STARS; i++) {
             int candidate = generator.nextInt(MAX_RANGE_STARS) + 1;
             if (!randomDip.getStarsColl().contains(candidate)) {
                 randomDip.getStarsColl().add(candidate);
-                
+
             }
         }
         return randomDip;

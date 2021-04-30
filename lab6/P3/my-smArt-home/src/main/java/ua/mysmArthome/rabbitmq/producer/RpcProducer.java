@@ -87,7 +87,7 @@ public class RpcProducer implements AutoCloseable {
 
         final BlockingQueue<String> response = new ArrayBlockingQueue<>(1); // will wait for one response
 
-        String ctag="";
+        String ctag = "";
         try {
             ctag = channel.basicConsume(replyQueueName, true, (consumerTag, delivery) -> {
                 if (delivery.getProperties().getCorrelationId().equals(corrId)) {
@@ -99,7 +99,7 @@ public class RpcProducer implements AutoCloseable {
             e1.printStackTrace();
         } // consume response of the server (consumer)
 
-        String result="";
+        String result = "";
         try {
             result = response.take();
             System.out.println(result);
@@ -111,13 +111,13 @@ public class RpcProducer implements AutoCloseable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         return result;
     }
-    
-    public String createWithProperty(String option,String id,String property){ // for hardcheck, id should be home's id
-        this.property=property;
-        return createMessage(option,id);
+
+    public String createWithProperty(String option, String id, String property) { // for hardcheck, id should be home's id
+        this.property = property;
+        return createMessage(option, id);
     }
 
     public void close() throws IOException {

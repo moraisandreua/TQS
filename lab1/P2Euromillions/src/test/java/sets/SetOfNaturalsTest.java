@@ -61,13 +61,13 @@ public class SetOfNaturalsTest {
     }
 
     @Test
-    public void testDuplicateOnAdd(){
+    public void testDuplicateOnAdd() {
         assertThrows(IllegalArgumentException.class, () -> setB.add(10));
     }
 
     @Test
-    public void testDuplicateArray(){
-        int[] stars = {9,8,8};
+    public void testDuplicateArray() {
+        int[] stars = {9, 8, 8};
 
         assertThrows(IllegalArgumentException.class, () -> setA.fromArray(stars));
     }

@@ -11,17 +11,17 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BlazeDemoReserve {
 
-  WebDriver driver;
+    WebDriver driver;
 
-  @FindBy(css="tr:nth-child(2) .btn")
-  private By btn;
+    @FindBy(css = "tr:nth-child(2) .btn")
+    private By btn;
 
-  public BlazeDemoReserve(WebDriver driver) {
-    this.driver = driver;
-  }
+    public BlazeDemoReserve(WebDriver driver) {
+        this.driver = driver;
+    }
 
-  public BlazeDemoPurchase clickChooseThisFlight() {
-    driver.findElement(By.cssSelector("tr:nth-child(2) .btn")).click();
-    return new BlazeDemoPurchase(this.driver);
-  }
+    public BlazeDemoPurchase clickChooseThisFlight() {
+        driver.findElement(By.cssSelector("tr:nth-child(2) .btn")).click();
+        return new BlazeDemoPurchase(this.driver);
+    }
 }

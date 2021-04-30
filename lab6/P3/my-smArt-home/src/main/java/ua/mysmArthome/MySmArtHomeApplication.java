@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Bean;
 @EnableSwagger2
 public class MySmArtHomeApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MySmArtHomeApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MySmArtHomeApplication.class, args);
+    }
 
-	@Bean	
-	public Docket mysmArthhomeAPI()	{		
-		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("ua.mysmArthome.controller")).build();	
-	}
+    @Bean
+    public Docket mysmArthhomeAPI() {
+        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("ua.mysmArthome.controller")).build();
+    }
 
 }

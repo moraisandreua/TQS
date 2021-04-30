@@ -24,10 +24,10 @@ public class StepDefinitions {
         List<Employee> employees = new ArrayList<>();
 
         for (List<String> columns : rows) {
-            if(columns.get(0).equals("id"))
+            if (columns.get(0).equals("id"))
                 continue;
 
-            employees.add(new Employee(Integer.valueOf(columns.get(0)), columns.get(1),Float.valueOf(columns.get(2))));
+            employees.add(new Employee(Integer.valueOf(columns.get(0)), columns.get(1), Float.valueOf(columns.get(2))));
         }
         manager = new SalaryManager(employees);
     }
@@ -50,10 +50,10 @@ class Employee {
     private float salary;
 
 
-    public Employee(int id, String user, float salary){
-        this.id=id;
-        this.user=user;
-        this.salary=salary;
+    public Employee(int id, String user, float salary) {
+        this.id = id;
+        this.user = user;
+        this.salary = salary;
     }
 
     public int getId() {
@@ -85,7 +85,7 @@ class SalaryManager {
     private Map<Integer, Employee> employees = new HashMap<>();
 
     public SalaryManager(final List<Employee> employees) {
-        this.employees = employees.stream().collect(Collectors.toMap(Employee::getId, Function.<Employee> identity()));
+        this.employees = employees.stream().collect(Collectors.toMap(Employee::getId, Function.<Employee>identity()));
 
     }
 

@@ -36,11 +36,11 @@ public class CarController_WithMockServiceIT {
     }
 
     @Test
-    public void whenPostCar_thenCreateCar( ) throws Exception {
+    public void whenPostCar_thenCreateCar() throws Exception {
         Car alex = new Car("Sierra 2.3 Diesel", "Ford");
 
         //given(service.save(Mockito.any())).willReturn(alex);
-        when( service.save(Mockito.any()) ).thenReturn( alex);
+        when(service.save(Mockito.any())).thenReturn(alex);
 
         mvc.perform(post("/api/cars").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(alex)))
                 .andExpect(status().isCreated())

@@ -3,8 +3,10 @@ package tqs.lab5;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import static org.junit.Assert.*;
 import static java.util.Arrays.asList;
+
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,6 +48,7 @@ public class StepDefinitions {
         c.push(int2);
         c.push("/");
     }
+
     @Then("the result is (\\d+)$")
     public void the_result_is(double expected) {
         assertEquals(expected, c.value());

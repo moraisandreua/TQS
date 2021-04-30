@@ -18,14 +18,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(MockitoExtension.class)
 public class CarManagerService_UnitTest {
 
-    @Mock( lenient = true)
+    @Mock(lenient = true)
     private CarRepository carRepository;
 
     @InjectMocks
     private CarManagerService carManagerService;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         Car ford = new Car("Sierra 2.3 Diesel", "Ford");
         Car volkswagen_art = new Car("Arteon", "Volkswagen");
         Car volkswagen_roc = new Car("T-Roc", "Volkswagen");
@@ -37,7 +37,7 @@ public class CarManagerService_UnitTest {
     }
 
     @Test
-    public void whenValidModel_thenCarShouldBeFound(){
+    public void whenValidModel_thenCarShouldBeFound() {
         String model = "Arteon";
         Car found = carManagerService.getCarDetails(model);
 

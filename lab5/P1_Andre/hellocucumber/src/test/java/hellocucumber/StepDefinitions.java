@@ -3,6 +3,7 @@ package hellocucumber;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import static org.junit.Assert.*;
 
 import static org.junit.Assert.*;
@@ -15,10 +16,12 @@ public class StepDefinitions {
     public void today_is_sunday() {
         today = "Sunday";
     }
+
     @Given("today is Friday")
     public void today_is_friday() {
         today = "Friday";
     }
+
     @Given("today is {string}")
     public void today_is(String today) {
         this.today = today;

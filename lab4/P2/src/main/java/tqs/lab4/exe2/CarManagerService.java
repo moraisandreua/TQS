@@ -2,6 +2,7 @@ package tqs.lab4.exe2;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import java.util.*;
 
 @Service
@@ -13,7 +14,7 @@ public class CarManagerService {
         this.carRepository = carRepository;
     }
 
-    public Car save(Car car){
+    public Car save(Car car) {
         return carRepository.save(car);
     }
 
@@ -22,10 +23,10 @@ public class CarManagerService {
     }*/
 
     public Car getCarDetails(String model) {
-        return  carRepository.findByModel(model);
+        return carRepository.findByModel(model);
     }
 
-    public List<Car> getAllCars(){
-        return  carRepository.findAll();
+    public List<Car> getAllCars() {
+        return carRepository.findAll();
     }
 }

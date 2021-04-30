@@ -38,7 +38,7 @@ public class SmartHome {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     @OneToMany(mappedBy = "smarthome")
     @JsonIgnore
     public List<Device> getList_devices() {
