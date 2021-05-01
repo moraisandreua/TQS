@@ -1,0 +1,23 @@
+package tqs.tp1.airquality;
+
+public class CityDataForecast {
+    private CityDataForecastDaily daily;
+
+    public CityDataForecast() {
+    }
+
+    public CityDataForecastDaily getDaily() {
+        return daily;
+    }
+
+    public void setDaily(CityDataForecastDaily daily) {
+        this.daily = daily;
+    }
+
+    @Override
+    public String toString() {
+        return "CityDataForecast{" +
+                "daily=" + daily +
+                '}';
+    }
+}

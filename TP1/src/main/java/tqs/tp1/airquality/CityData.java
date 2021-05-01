@@ -11,6 +11,8 @@ public class CityData {
     private CityDataCity city;
     private String dominentpol;
     private CityDataIaqi iaqi;
+    private CityDataTime time;
+    private CityDataForecast forecast;
 
     public CityData() {
     }
@@ -63,6 +65,22 @@ public class CityData {
         this.iaqi = iaqi;
     }
 
+    public CityDataTime getTime() {
+        return time;
+    }
+
+    public void setTime(CityDataTime time) {
+        this.time = time;
+    }
+
+    public CityDataForecast getForecast() {
+        return forecast;
+    }
+
+    public void setForecast(CityDataForecast forecast) {
+        this.forecast = forecast;
+    }
+
     @Override
     public String toString() {
         return "CityData{" +
@@ -72,6 +90,8 @@ public class CityData {
                 ", city=" + city +
                 ", dominentpol='" + dominentpol + '\'' +
                 ", iaqi=" + iaqi +
+                ", time=" + time +
+                ", forecast=" + forecast +
                 '}';
     }
 }
