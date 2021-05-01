@@ -1,4 +1,4 @@
-package tqs.tp1.airquality;
+package tqs.tp1.airquality.API;
 
 import java.util.List;
 

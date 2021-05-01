@@ -1,4 +1,4 @@
-package tqs.tp1.airquality;
+package tqs.tp1.airquality.API;
 
 public class CityDataForecast {
     private CityDataForecastDaily daily;
