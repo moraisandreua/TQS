@@ -6,7 +6,12 @@ import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
+
+import org.hamcrest.Matchers;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Unit test for simple App.
@@ -21,12 +26,22 @@ public class AppTest
         assertTrue( true );
     }
 
+    // third point
     @Test
-    public void getResponseBody(){
-        //given().when().get(url).then().log().all();
+    public void getResponse198_199(){
+        get(url).then().body("id", hasItems(198,199));
+    }
 
-        get(url).then().body("$");
+    // second point
+    @Test
+    public void getResponsePorroTempora(){
+        Map<String, Object> expected = new HashMap<String, Object>();
+        expected.put("id", 4);
+        expected.put("title", "et porro tempora");
+        expected.put("userId", 1);
+        expected.put("completed", true);
 
+        get(url).then().body("", Matchers.hasItem(expected));
     }
 
     // first point
