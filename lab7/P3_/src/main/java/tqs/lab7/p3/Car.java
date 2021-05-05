@@ -24,6 +24,12 @@ public class Car {
         this.maker = maker;
     }
 
+    public Car(Long id, String model, String maker) {
+        this.carId = id;
+        this.model = model;
+        this.maker = maker;
+    }
+
     @Override
     public boolean equals(Object o) {
         // self check
