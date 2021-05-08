@@ -27,7 +27,7 @@ public class CarControllerMvcTest {
 
     @Test
     void listCars(){
-        Car c = new Car(1L,"Tesla", "Model3");
+        Car c = new Car(1L,"tesla", "model3");
         Mockito.when(service.getAllCars()).thenReturn(List.of(c));
 
 

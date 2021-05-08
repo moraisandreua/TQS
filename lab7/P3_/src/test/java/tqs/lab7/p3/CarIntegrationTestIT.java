@@ -52,13 +52,14 @@ public class CarIntegrationTestIT {
 
     @BeforeEach
     public void setUpTestCars() throws Exception{
-        car1 = repository.saveAndFlush(new Car("model3", "tesla"));
+        car1 = repository.saveAndFlush(new Car("roadster", "tesla"));
         car2 = repository.saveAndFlush(new Car("sierra", "ford"));
     }
 
     @AfterEach
     public void resetDb() {
-        //repository.deleteAll();
+        repository.delete(car1);
+        repository.delete(car2);
     }
 
     @Test
@@ -66,7 +67,7 @@ public class CarIntegrationTestIT {
         ResponseEntity<Car> entity = restClient.getForEntity("/api/cars/"+car1.getModel(), Car.class);
 
         assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(entity.getBody().getModel()).isEqualTo("model3");
+        assertThat(entity.getBody().getModel()).isEqualTo(car1.getModel());
     }
 
     @Test

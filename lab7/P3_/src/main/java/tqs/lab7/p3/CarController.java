@@ -32,7 +32,7 @@ public class CarController {
 
     // decidi alterar a implementação do Diagrama porque achei que não fazia sentido filtrar do ID, sendo que eu sei diretamente o modelo do carro mas não o ID
     @GetMapping("/cars/{model}")
-    private Car getCarById(@PathVariable String id) {
-        return carManagerService.getCarDetails(id);
+    private Car getCarById(@PathVariable String model) {
+        return carManagerService.getCarDetails(model);
     }
 }
