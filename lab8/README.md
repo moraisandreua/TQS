@@ -53,3 +53,124 @@ Finished: FAILURE
 ![pipeline](https://i.imgur.com/N1OQLwg.png)
 
 ![jenkinsfile](https://i.imgur.com/2Ow6jqT.png)
+
+### Resultado depois do build
+```
+Started by user Administrator
+Lightweight checkout support not available, falling back to full checkout.
+Checking out git https://github.com/moraisandreua/TQS.git into /Users/andre/.jenkins/workspace/lab8_pipeline@script to read lab7/P3_/Jenkinsfile
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential 52035288-be19-4b43-9a99-c4b63aa1a44e
+Cloning the remote Git repository
+Cloning repository https://github.com/moraisandreua/TQS.git
+ > git init /Users/andre/.jenkins/workspace/lab8_pipeline@script # timeout=10
+Fetching upstream changes from https://github.com/moraisandreua/TQS.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.31.1'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/moraisandreua/TQS.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/moraisandreua/TQS.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Seen branch in repository origin/main
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 0ecbe9b2ca0fccde55768ab7cafec25e379ee793 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0ecbe9b2ca0fccde55768ab7cafec25e379ee793 # timeout=10
+Commit message: "jenkinsfile"
+First time build. Skipping changelog.
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/andre/.jenkins/workspace/lab8_pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential 52035288-be19-4b43-9a99-c4b63aa1a44e
+Cloning the remote Git repository
+Cloning repository https://github.com/moraisandreua/TQS.git
+ > git init /Users/andre/.jenkins/workspace/lab8_pipeline # timeout=10
+Fetching upstream changes from https://github.com/moraisandreua/TQS.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.31.1'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/moraisandreua/TQS.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/moraisandreua/TQS.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Seen branch in repository origin/main
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 0ecbe9b2ca0fccde55768ab7cafec25e379ee793 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0ecbe9b2ca0fccde55768ab7cafec25e379ee793 # timeout=10
+Commit message: "jenkinsfile"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (test java installation)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ java -version
+openjdk version "11.0.9.1" 2020-11-04 LTS
+OpenJDK Runtime Environment Corretto-11.0.9.12.1 (build 11.0.9.1+12-LTS)
+OpenJDK 64-Bit Server VM Corretto-11.0.9.12.1 (build 11.0.9.1+12-LTS, mixed mode)
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (test maven installation)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn -version
+Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+Maven home: /Users/andre/.mvnvm/apache-maven-3.6.3
+Java version: 11.0.9.1, vendor: Amazon.com Inc., runtime: /Users/andre/Library/Java/JavaVirtualMachines/correto/Contents/Home
+Default locale: en_PT, platform encoding: UTF-8
+OS name: "mac os x", version: "10.16", arch: "x86_64", family: "mac"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+```
+
+Scheduling e update do Jenkinsfile
+![scheduling](https://i.imgur.com/S0glCWD.png)
+
+### Resultado depois do build
