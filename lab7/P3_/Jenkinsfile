@@ -6,8 +6,10 @@ pipeline {
     }
     stages {
         stage('Install') {
-            steps (dir 'lab7/P3_/') {
-                sh 'mvn clean install'
+            steps {
+                dir('lab7/P3_/'){
+                    sh 'mvn clean install'
+                }
             }
             post {
                 always {
