@@ -42,3 +42,14 @@ Avoid second fetch
 ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job.
 Finished: FAILURE
 ```
+
+### Trocando o path para o projeto da aula passada
+
+![aula7_p3_](https://i.imgur.com/DkuGXED.png)
+
+
+# TASK II
+
+![pipeline](https://i.imgur.com/N1OQLwg.png)
+
+![jenkinsfile](https://i.imgur.com/2Ow6jqT.png)
