@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import './App.css';
 
 export default class Main extends React.Component {
     constructor(){
@@ -15,12 +17,11 @@ export default class Main extends React.Component {
 
     search = (e) => {
         if(e.which === 13) {
-            fetch("http://localhost:8080/api/v1/city/"+this.state.search).then(data => data.json()).then(data => this.setState({o3:data.data.forecast.daily.o3, pm10:data.data.forecast.daily.pm10, pm25:data.data.forecast.daily.pm25, uvi:data.data.forecast.daily.uvi}));
+            fetch("http://localhost:8080/api/v1/city/"+this.state.search).then(data => data.json()).then(data => (data.status==="ok") ? this.setState({o3:data.data.forecast.daily.o3, pm10:data.data.forecast.daily.pm10, pm25:data.data.forecast.daily.pm25, uvi:data.data.forecast.daily.uvi}) : alert(data.data));
         }
     }
 
     componentDidMount(){
-        console.log(this.state.o3);
         fetch("http://localhost:8080/api/v1/cities").then(data => data.json()).then(data => this.setState({alreadySearched:data}));
     }
 
@@ -29,6 +30,7 @@ export default class Main extends React.Component {
             <div className="App">
                 <div className="NavBar">
                     <div className="NavBarTitle">AirQuality</div>
+                    <div className="NavBarButton"><Link to="/logs">Logs</Link></div>
                     <div className="NavBarWrapper"></div>
                     <div className="NavBarSearch">
                         {

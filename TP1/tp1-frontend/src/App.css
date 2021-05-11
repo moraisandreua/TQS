@@ -54,7 +54,12 @@
 
 .NavBarTitle{
   font-size: 20pt;
-  color: white;
+  color: white !important;
+}
+
+.NavBarTitle a{
+  font-size: 20pt;
+  color: white !important;
 }
 
 .NavBarWrapper{
@@ -96,8 +101,10 @@
 }
 
 .Card{
-  width: calc(100% / 4);
+  width: 100%;
   padding: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .Box{
@@ -130,4 +137,17 @@
 
 .BoxBodyItem{
   padding: 2px 20px;
+}
+
+a{
+  color: initial;
+  text-decoration: none;
+}
+
+.NavBarButton{
+  padding: 0px 10px;
+}
+
+.NavBarButton a{
+  color: rgb(238, 238, 238) !important;
 }
