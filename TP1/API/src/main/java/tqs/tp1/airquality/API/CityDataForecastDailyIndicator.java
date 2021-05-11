@@ -43,11 +43,11 @@ public class CityDataForecastDailyIndicator {
 
     @Override
     public String toString() {
-        return "CityDataForecastDailyIndicator{" +
-                "avg=" + avg +
-                ", day='" + day + '\'' +
-                ", max=" + max +
-                ", min=" + min +
-                '}';
+        return "{" +
+                "\"avg\": " + avg +
+                ", \"day\": \"" + day + '\"' +
+                ", \"max\": " + max +
+                ", \"min\": " + min +
+                "}";
     }
 }

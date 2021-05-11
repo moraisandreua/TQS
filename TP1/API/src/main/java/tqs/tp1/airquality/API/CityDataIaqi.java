@@ -109,18 +109,18 @@ public class CityDataIaqi {
 
     @Override
     public String toString() {
-        return "CityDataIaqi{" +
-                "dew=" + dew +
-                ", h=" + h +
-                ", no2=" + no2 +
-                ", o3=" + o3 +
-                ", p=" + p +
-                ", pm10=" + pm10 +
-                ", pm25=" + pm25 +
-                ", so2=" + so2 +
-                ", t=" + t +
-                ", w=" + w +
-                ", wg=" + wg +
-                '}';
+        return "{" +
+                "\"dew\": " + dew +
+                ", \"h\": " + h +
+                ", \"no2\": " + no2 +
+                ", \"o3\": " + o3 +
+                ", \"p\": " + p +
+                ", \"pm10\": " + pm10 +
+                ", \"pm25\": " + pm25 +
+                ", \"so2\": " + so2 +
+                ", \"t\": " + t +
+                ", \"w\": " + w +
+                ", \"wg\": " + wg +
+                "}";
     }
 }

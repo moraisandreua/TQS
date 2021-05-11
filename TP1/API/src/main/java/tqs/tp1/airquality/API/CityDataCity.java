@@ -38,10 +38,10 @@ public class CityDataCity {
 
     @Override
     public String toString() {
-        return "CityDataCity{" +
-                "geo=" + geo +
-                ", name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                '}';
+        return "{" +
+                "\"geo\":" + geo +
+                ", \"name\": \"" + name +
+                "\", \"url\": \"" + url +
+                "\"}";
     }
 }

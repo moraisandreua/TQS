@@ -45,11 +45,11 @@ public class CityDataForecastDaily {
 
     @Override
     public String toString() {
-        return "CityDataForecastDaily{" +
-                "o3=" + o3 +
-                ", pm10=" + pm10 +
-                ", pm25=" + pm25 +
-                ", uvi=" + uvi +
-                '}';
+        return "{" +
+                "\"o3\": " + o3 +
+                ", \"pm10\": " + pm10 +
+                ", \"pm25\": " + pm25 +
+                ", \"uvi\": " + uvi +
+                "}";
     }
 }

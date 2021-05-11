@@ -46,11 +46,11 @@ public class CityDataTime {
 
     @Override
     public String toString() {
-        return "CityDataTime{" +
-                "s='" + s + '\'' +
-                ", tz='" + tz + '\'' +
-                ", v=" + v +
-                ", iso='" + iso + '\'' +
-                '}';
+        return "{" +
+                "\"s\": \"" + s +
+                "\", \"tz\": \"" + tz +
+                "\", \"v\": " + v +
+                ", \"iso\": \"" + iso +
+                "\"}";
     }
 }

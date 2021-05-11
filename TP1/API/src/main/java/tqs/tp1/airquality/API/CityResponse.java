@@ -29,9 +29,6 @@ public class CityResponse {
 
     @Override
     public String toString() {
-        return "CityResponse{" +
-                "status='" + status + '\'' +
-                ", data=" + data +
-                '}';
+        return "{\"status\":\""+status+"\", \"data\":"+data.toString()+"}";
     }
 }

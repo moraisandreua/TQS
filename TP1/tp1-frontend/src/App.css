@@ -63,6 +63,24 @@
 
 .NavBarSearch{
   width: fit-content;
+  position: relative;
+}
+
+.NavBarSearch .suggestions{
+  position: absolute;
+  width:100%;
+  padding:3px;
+  background-color: white;
+  top: 26px;
+  z-index: 2;
+}
+
+.NavBarSearch .suggestions div{
+  cursor: pointer;
+}
+
+.NavBarSearch .suggestions div:hover{
+  background-color: rgba(40, 44, 52, 0.1);
 }
 
 .NavBarSearch input{
@@ -72,4 +90,44 @@
   border: 0px;
 }
 
+.Cards{
+  width: 100%;
+  display: flex;
+}
 
+.Card{
+  width: calc(100% / 4);
+  padding: 10px;
+}
+
+.Box{
+  width:100%;
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+}
+
+.BoxTitle{
+  width: 100%;
+  padding: 5px;
+  border-bottom: 1px solid lightgray;
+}
+
+.BoxBody{
+  width: 100%;
+  padding: 5px;
+}
+
+.BoxBodyDay, .BoxBodyItem{
+  width: 100%;
+  text-align: left;
+}
+
+.BoxBodyDay{
+  padding: 5px 0px;
+  font-weight: bold;
+}
+
+.BoxBodyItem{
+  padding: 2px 20px;
+}

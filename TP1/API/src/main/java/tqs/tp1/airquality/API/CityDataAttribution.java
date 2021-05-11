@@ -37,10 +37,10 @@ public class CityDataAttribution {
 
     @Override
     public String toString() {
-        return "CityDataAttribution{" +
-                "url='" + url + '\'' +
-                ", name='" + name + '\'' +
-                ", logo='" + logo + '\'' +
-                '}';
+        return "{" +
+                "\"url\": \"" + url +
+                "\", \"name\": \"" + name +
+                "\", \"logo\": \"" + logo +
+                "\"}";
     }
 }

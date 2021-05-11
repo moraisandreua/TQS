@@ -16,8 +16,8 @@ public class CityDataForecast {
 
     @Override
     public String toString() {
-        return "CityDataForecast{" +
-                "daily=" + daily +
-                '}';
+        return "{" +
+                "\"daily\": " + daily +
+                "}";
     }
 }

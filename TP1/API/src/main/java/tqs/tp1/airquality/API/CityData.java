@@ -83,15 +83,15 @@ public class CityData {
 
     @Override
     public String toString() {
-        return "CityData{" +
-                "aqi=" + aqi +
-                ", idx=" + idx +
-                ", attributions=" + attributions +
-                ", city=" + city +
-                ", dominentpol='" + dominentpol + '\'' +
-                ", iaqi=" + iaqi +
-                ", time=" + time +
-                ", forecast=" + forecast +
-                '}';
+        return "{" +
+                "\"aqi\":" + aqi +
+                ", \"idx\":" + idx +
+                ", \"attributions\":" + attributions +
+                ", \"city\":" + city +
+                ", \"dominentpol\": \"" + dominentpol +
+                "\", \"iaqi\":" + iaqi +
+                ", \"time\":" + time +
+                ", \"forecast\":" + forecast +
+                "}";
     }
 }

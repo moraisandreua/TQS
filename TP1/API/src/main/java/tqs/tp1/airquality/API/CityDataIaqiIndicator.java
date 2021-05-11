@@ -19,8 +19,6 @@ public class CityDataIaqiIndicator {
 
     @Override
     public String toString() {
-        return "CityDataIaqiIndicator{" +
-                "v='" + v + '\'' +
-                '}';
+        return v.toString();
     }
 }
