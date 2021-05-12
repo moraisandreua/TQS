@@ -5,14 +5,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import redis.clients.jedis.Jedis;
 import tqs.tp1.airquality.API.CityResponse;
 import tqs.tp1.airquality.API.CityResponseError;
 
+import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -22,7 +25,7 @@ public class AirQualityController {
     // lista de cidades que vão sendo encontradas
     // é chamado de cada vez que alguem entra na página web
     @CrossOrigin(origins = "*")
-    @GetMapping("/cities")
+    @GetMapping(value = "/cities", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getAllCities() {
         Set<String> cidades = jedis.keys("*");
         List<String> retorno = new ArrayList<>();
@@ -35,7 +38,7 @@ public class AirQualityController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/city/{name}")
+    @GetMapping(value="/city/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getCity(@PathVariable(value = "name") String name) throws JSONException {
         long startTime = System.nanoTime() / 1000000;
 

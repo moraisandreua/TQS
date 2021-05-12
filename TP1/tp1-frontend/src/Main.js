@@ -11,13 +11,14 @@ export default class Main extends React.Component {
             o3:[{"day":"10-05-2021", "avg":"33", "min":"28", "max":"38"}],
             pm10:[{"day":"10-05-2021", "avg":"33", "min":"28", "max":"38"}],
             pm25:[{"day":"10-05-2021", "avg":"33", "min":"28", "max":"38"}],
-            uvi:[{"day":"10-05-2021", "avg":"33", "min":"28", "max":"38"}]
+            uvi:[{"day":"10-05-2021", "avg":"33", "min":"28", "max":"38"}],
+            location:"Location, country"
         }
     }
 
     search = (e) => {
         if(e.which === 13) {
-            fetch("http://localhost:8080/api/v1/city/"+this.state.search).then(data => data.json()).then(data => (data.status==="ok") ? this.setState({o3:data.data.forecast.daily.o3, pm10:data.data.forecast.daily.pm10, pm25:data.data.forecast.daily.pm25, uvi:data.data.forecast.daily.uvi}) : alert(data.data));
+            fetch("http://localhost:8080/api/v1/city/"+this.state.search).then(data => data.json()).then(data => (data.status==="ok") ? this.setState({o3:data.data.forecast.daily.o3, pm10:data.data.forecast.daily.pm10, pm25:data.data.forecast.daily.pm25, uvi:data.data.forecast.daily.uvi, location: data.data.city.name}) : alert(data.data));
         }
     }
 
@@ -46,8 +47,11 @@ export default class Main extends React.Component {
                                 </div>
                             : <span></span>
                         }
-                        <input type="text" placeholder="City or country..." value={this.state.search} onChange={(evt) => this.setState({search:evt.target.value})} onKeyDown={this.search}/>
+                        <input id="searchInput" type="text" placeholder="City or country..." value={this.state.search} onChange={(evt) => this.setState({search:evt.target.value})} onKeyDown={this.search}/>
                     </div>
+                </div>
+                <div className="Cards">
+                    <div className="Card" id="locationTitle">{this.state.location}</div>
                 </div>
                 <div className="Cards">
                     <div className="Card">
