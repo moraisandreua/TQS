@@ -6,6 +6,10 @@ public class CityDataForecast {
     public CityDataForecast() {
     }
 
+    public CityDataForecast(CityDataForecastDaily daily){
+        this.daily=daily;
+    }
+
     public CityDataForecastDaily getDaily() {
         return daily;
     }

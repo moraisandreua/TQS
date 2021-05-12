@@ -11,6 +11,12 @@ public class CityDataAttribution {
     public CityDataAttribution() {
     }
 
+    public CityDataAttribution(String url, String name, String logo) {
+        this.url=url;
+        this.name=name;
+        this.logo=logo;
+    }
+
     public String getUrl() {
         return url;
     }

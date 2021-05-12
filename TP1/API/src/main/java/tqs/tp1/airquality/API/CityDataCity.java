@@ -12,6 +12,12 @@ public class CityDataCity {
     public CityDataCity() {
     }
 
+    public CityDataCity(List<Float> geo, String name, String url) {
+        this.geo=geo;
+        this.name=name;
+        this.url=url;
+    }
+
     public void setGeo(List<Float> geo) {
         this.geo = geo;
     }

@@ -6,7 +6,14 @@ public class CityDataForecastDailyIndicator {
     private Integer max;
     private Integer min;
 
-    public CityDataForecastDailyIndicator() {
+    public CityDataForecastDailyIndicator(){
+    }
+
+    public CityDataForecastDailyIndicator(Integer avg, String day, Integer max, Integer min) {
+        this.avg=avg;
+        this.day=day;
+        this.max=max;
+        this.min=min;
     }
 
     public Integer getAvg() {

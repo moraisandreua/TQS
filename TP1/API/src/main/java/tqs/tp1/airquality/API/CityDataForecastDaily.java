@@ -11,6 +11,13 @@ public class CityDataForecastDaily {
     public CityDataForecastDaily() {
     }
 
+    public CityDataForecastDaily(List<CityDataForecastDailyIndicator> o3, List<CityDataForecastDailyIndicator> pm10, List<CityDataForecastDailyIndicator> pm25, List<CityDataForecastDailyIndicator> uvi) {
+        this.o3=o3;
+        this.pm10=pm10;
+        this.pm25=pm25;
+        this.uvi=uvi;
+    }
+
     public List<CityDataForecastDailyIndicator> getO3() {
         return o3;
     }

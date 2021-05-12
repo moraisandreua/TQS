@@ -9,6 +9,10 @@ public class CityDataIaqiIndicator {
     public CityDataIaqiIndicator() {
     }
 
+    public CityDataIaqiIndicator(Float value) {
+        this.v=value;
+    }
+
     public Float getV() {
         return v;
     }

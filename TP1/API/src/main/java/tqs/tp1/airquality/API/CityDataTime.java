@@ -12,6 +12,13 @@ public class CityDataTime {
     public CityDataTime() {
     }
 
+    public CityDataTime(String s, String tz, Integer v, String iso) {
+        this.s=s;
+        this.tz=tz;
+        this.v=v;
+        this.iso=iso;
+    }
+
     public String getS() {
         return s;
     }
