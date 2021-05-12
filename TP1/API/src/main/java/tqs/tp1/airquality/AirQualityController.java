@@ -17,7 +17,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/v1")
 public class AirQualityController {
-    Jedis jedis = connect();
+    Jedis jedis = Utils.connect();
 
     // lista de cidades que vão sendo encontradas
     // é chamado de cada vez que alguem entra na página web
@@ -28,7 +28,7 @@ public class AirQualityController {
         List<String> retorno = new ArrayList<>();
         System.out.println(cidades);
         for(String x : cidades)
-            if(checkName(x))
+            if(new Utils(x).checkName())
                 retorno.add("\"" + x + "\"");
 
         return retorno.toString();
@@ -39,7 +39,9 @@ public class AirQualityController {
     public String getCity(@PathVariable(value = "name") String name) throws JSONException {
         long startTime = System.nanoTime() / 1000000;
 
-        if(!checkName(name))
+        Utils utils = new Utils(name);
+
+        if(!utils.checkName())
             return "{\"status\":\"error\", \"data\":\"invalid search\"}";
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -50,7 +52,7 @@ public class AirQualityController {
         String retorno = "";
         if(cache==null){
             jedis.set(name.toLowerCase()+"_requests", "1");
-            retorno= callAPI(name);
+            retorno= utils.callAPI();
         }else {
             // no caso de a cache ser erro
             if(jedis.get(name.toLowerCase()+"_errors") != null){
@@ -68,8 +70,8 @@ public class AirQualityController {
             if (last_day.equals(dia_atual))
                 retorno= cache;
             else
-                if(getCacheUpdate(name))
-                    retorno= callAPI(name);
+                if(utils.getCacheUpdate())
+                    retorno= utils.callAPI();
                 else
                     retorno= cache;
         }
@@ -113,7 +115,7 @@ public class AirQualityController {
         return "{\"requests\": "+request_list+", \"errors\": "+error_list+", \"elapsed_time\":"+elTime_list+"}";
     }
 
-    public Jedis connect(){
+    /*public Jedis connect(){
         try {
             Jedis jedis = new Jedis("localhost");
             System.out.println("The server is running " + jedis.ping());
@@ -163,5 +165,5 @@ public class AirQualityController {
     public boolean getCacheUpdate(String name){
         // verifica se já passou um dia desde o ultimo pedido acedido à db
         return System.currentTimeMillis() - Long.valueOf(jedis.get(name.toLowerCase() + "_lastcheck")) > 3600000;
-    }
+    }*/
 }
