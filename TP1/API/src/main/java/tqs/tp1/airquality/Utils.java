@@ -1,5 +1,6 @@
 package tqs.tp1.airquality;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 import redis.clients.jedis.Jedis;
 import tqs.tp1.airquality.API.CityResponse;
@@ -9,6 +10,8 @@ public class Utils {
     private String name;
     static Jedis jedis = connect();
 
+    private AirQualityResolver airQualityResolver=new AirQualityResolver();
+
     public Utils(String name){
         this.name=name.toLowerCase();
     }
@@ -17,13 +20,13 @@ public class Utils {
         RestTemplate restTemplate = new RestTemplate();
         String retorno="";
         try{
-            CityResponse quote = restTemplate.getForObject( "https://api.waqi.info/feed/"+name+"/?token=5c49ea620bd7657a43a14a9d17706172b71c38f4", CityResponse.class);
+            CityResponse quote = airQualityResolver.findResultForName(name);
             jedis.set(name.toLowerCase() + "_lastcheck", String.valueOf(System.currentTimeMillis()));
             retorno= quote.toString();
         }catch(Exception e){
             CityResponseError quote = null;
             try {
-                quote = restTemplate.getForObject("https://api.waqi.info/feed/" + name + "/?token=5c49ea620bd7657a43a14a9d17706172b71c38f4", CityResponseError.class);
+                quote = airQualityResolver.findErrorForName(name);
 
                 retorno= quote.toString();
             }catch(Exception e2){
@@ -41,7 +44,7 @@ public class Utils {
     }
 
     public boolean checkName(){
-        if(name.contains("_requests") || name.contains("_errors")){
+        if(name.contains("_requests") || name.contains("_errors") || name.contains("_lastcheck")){
             return false;
         }
         return true;

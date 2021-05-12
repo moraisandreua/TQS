@@ -104,9 +104,9 @@ public class UtilsUnitTests {
     @Test
     void testUtils_Validators(){
         // valida o nome da cidade/pais
-        assertTrue(utils.checkName());
+        assertTrue(!utils.checkName());
 
         // valida que a cache não precisa ser atualizada
-        assertTrue(utils.getCacheUpdate());
+        assertTrue(!utils.getCacheUpdate());
     }
 }
