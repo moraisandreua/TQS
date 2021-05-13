@@ -1,8 +1,8 @@
 package tqs.tp1.airquality;
 
 import org.springframework.web.client.RestTemplate;
-import tqs.tp1.airquality.API.CityResponse;
-import tqs.tp1.airquality.API.CityResponseError;
+import tqs.tp1.airquality.api.CityResponse;
+import tqs.tp1.airquality.api.CityResponseError;
 
 public class AirQualityResolver {
 

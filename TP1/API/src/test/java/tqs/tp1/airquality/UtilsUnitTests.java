@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tqs.tp1.airquality.API.*;
+import tqs.tp1.airquality.api.*;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ class UtilsUnitTests {
     }
 
     @Test
-    public void testCall_n_Parse() throws JsonProcessingException {
+    void testCall_n_Parse() throws JsonProcessingException {
 
         assertNotNull(utils);
 

@@ -3,8 +3,8 @@ package tqs.tp1.airquality;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
-import tqs.tp1.airquality.API.CityResponse;
-import tqs.tp1.airquality.API.CityResponseError;
+import tqs.tp1.airquality.api.CityResponse;
+import tqs.tp1.airquality.api.CityResponseError;
 
 public class Utils {
 

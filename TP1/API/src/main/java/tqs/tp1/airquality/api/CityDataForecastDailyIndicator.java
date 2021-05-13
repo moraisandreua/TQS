@@ -1,4 +1,4 @@
-package tqs.tp1.airquality.API;
+package tqs.tp1.airquality.api;
 
 public class CityDataForecastDailyIndicator {
     private Integer avg;

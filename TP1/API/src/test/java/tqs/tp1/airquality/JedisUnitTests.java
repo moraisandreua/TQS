@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.junit.jupiter.inheritance.RedisContainer;
-import tqs.tp1.airquality.API.CityResponse;
+import tqs.tp1.airquality.api.CityResponse;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;

@@ -2,13 +2,14 @@ package tqs.tp1.airquality;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.client.RestTemplate;
-import tqs.tp1.airquality.API.*;
+import tqs.tp1.airquality.api.*;
 
 import java.util.List;
 
@@ -25,6 +26,8 @@ class WaqiApiTests {
 
     @InjectMocks
     AirQualityResolver resolver;
+
+    static Logger log = Logger.getLogger(Utils.class.getName());
 
     @Test
     void whenCorrectPlace_returnAirQuality() throws JsonProcessingException {
@@ -104,9 +107,16 @@ class WaqiApiTests {
 
     @Test
     void whenWrongPlace_throwIncorrectName() {
-        //unecessary stubbing
-        //when(restTemplate.getForObject(contains("/feed/Tokio/"), eq(CityResponseError.class))).thenThrow(IndexOutOfBoundsException.class);
+        CityResponseError result=null;
+        when(restTemplate.getForObject(contains("/feed/Coimbra/"), eq(CityResponseError.class))).thenThrow(IndexOutOfBoundsException.class);
 
-        //CityResponseError result = resolver.findErrorForName("Tokio");
+
+        try{
+            result = resolver.findErrorForName("Coimbra");
+        }catch(Exception e){
+            log.fatal("Coimbra does not exists");
+        }
+
+        assertThat(result, is(nullValue()));
     }
 }

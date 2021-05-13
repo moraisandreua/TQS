@@ -1,4 +1,4 @@
-package tqs.tp1.airquality.API;
+package tqs.tp1.airquality.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;

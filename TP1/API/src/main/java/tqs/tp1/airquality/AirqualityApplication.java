@@ -9,7 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
-import tqs.tp1.airquality.API.CityResponse;
+import tqs.tp1.airquality.api.CityResponse;
 
 @SpringBootApplication
 public class AirqualityApplication {
@@ -27,7 +27,7 @@ public class AirqualityApplication {
     }
 
     @Bean
-    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+    public CommandLineRunner run(RestTemplate restTemplate){
         log.info("Checking connection on startup");
         return args -> {
             CityResponse quote = restTemplate.getForObject(
