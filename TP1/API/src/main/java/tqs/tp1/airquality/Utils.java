@@ -38,7 +38,7 @@ public class Utils {
         String retorno="";
         try{
             CityResponse quote = airQualityResolver.findResultForName(name);
-            jedis.set(name.toLowerCase() + KEY_LASTCHECK, String.valueOf(System.currentTimeMillis()));
+            jedis.set(name + KEY_LASTCHECK, String.valueOf(System.currentTimeMillis()));
             retorno= quote.toString();
         }catch(Exception e){
             CityResponseError quote = null;
@@ -49,10 +49,10 @@ public class Utils {
             }catch(Exception e2){
                 retorno="{\"status\":\"error\", \"data\":\"Error on that place\"}";
             }
-            String erros = jedis.get(name.toLowerCase()+KEY_ERRORS);
+            String erros = jedis.get(name+KEY_ERRORS);
 
             if(erros==null)
-                jedis.set(name.toLowerCase()+KEY_ERRORS, "1");
+                jedis.set(name+KEY_ERRORS, "1");
 
         }
 
@@ -66,7 +66,7 @@ public class Utils {
 
     public boolean getCacheUpdate(){
         // verifica se já passou um dia desde o ultimo pedido acedido à db
-        return System.currentTimeMillis() - Long.valueOf(jedis.get(name.toLowerCase() + KEY_LASTCHECK)) > 3600000;
+        return System.currentTimeMillis() - Long.valueOf(jedis.get(name + KEY_LASTCHECK)) > 3600000;
     }
 
     public static Jedis connect(){

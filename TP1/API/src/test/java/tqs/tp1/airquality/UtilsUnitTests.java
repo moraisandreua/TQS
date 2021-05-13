@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.util.ReflectionTestUtils;
 import tqs.tp1.airquality.API.*;
 
 import java.util.List;
@@ -23,8 +23,9 @@ class UtilsUnitTests {
 
     @BeforeEach
     void setup(){
-        //utils.setName("braga");
-        ReflectionTestUtils.setField(utils, "name",  "braga"); // object to be injected
+        MockitoAnnotations.initMocks(this);
+        utils.setName("braga");
+        //ReflectionTestUtils.setField(utils, "name",  "braga"); // object to be injected
         utils.jedis.del("braga");
     }
 

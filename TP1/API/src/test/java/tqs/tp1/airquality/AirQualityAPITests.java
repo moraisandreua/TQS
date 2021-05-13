@@ -11,6 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import redis.clients.jedis.Jedis;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -39,9 +41,9 @@ class AirQualityAPITests {
 
         mvc.perform(get("/api/v1/cities").contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk());
-                //.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                //.andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))));
                 //.andExpect(jsonPath("$[1]", is("mexico"))); // porque o LPUSH insere à esquerda. Logo, como mexico foi o primeiro a ser inserido, vai estar na segunda posição
     }
 
@@ -56,6 +58,39 @@ class AirQualityAPITests {
                 .andExpect(jsonPath("$.data.city.name", is("Sobreiras-Lordelo do Ouro, Porto, Portugal")));
     }
 
+    @Test
+    void whenSearch_thenIncrementRequests() throws Exception {
+        mvc.perform(get("/api/v1/city/Porto").contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andDo(mvcResult -> {
+                    Integer requests = Integer.valueOf(jedis.get("porto_requests"));
+                    assertThat(requests, greaterThanOrEqualTo(1));
+                });
+    }
+
+    @Test
+    void whenError_thenIncrementErrors() throws Exception {
+        mvc.perform(get("/api/v1/city/tokio").contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andDo(mvcResult -> {
+                    Integer errors = Integer.valueOf(jedis.get("tokio_errors"));
+                    assertThat(errors, greaterThanOrEqualTo(1));
+                });
+    }
+
+    @Test
+    void whenLogs_thenShowResults() throws Exception {
+        mvc.perform(get("/api/v1/logs").contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.elapsed_time", hasSize(lessThanOrEqualTo(17))));
 
 
+
+    }
 }

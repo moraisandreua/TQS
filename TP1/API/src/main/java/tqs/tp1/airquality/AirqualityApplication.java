@@ -28,12 +28,15 @@ public class AirqualityApplication {
 
     @Bean
     public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+        log.info("Checking connection on startup");
         return args -> {
             CityResponse quote = restTemplate.getForObject(
                     "https://api.waqi.info/feed/Lisbon/?token=5c49ea620bd7657a43a14a9d17706172b71c38f4", CityResponse.class);
 
             if(quote != null)
                 log.info(quote.toString());
+            else
+                log.info("Error creating object");
         };
     }
 }
