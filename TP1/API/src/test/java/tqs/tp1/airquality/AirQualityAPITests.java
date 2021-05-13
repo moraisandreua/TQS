@@ -71,6 +71,19 @@ class AirQualityAPITests {
     }
 
     @Test
+    void whenSearchData_thenGetResults() throws Exception {
+        mvc.perform(get("/api/v1/city/2021-05-18").contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.forecast.daily.o3[0].day", is("2021-05-18")))
+                .andExpect(jsonPath("$.data.forecast.daily.pm10[0].day", is("2021-05-18")))
+                .andExpect(jsonPath("$.data.forecast.daily.pm25[0].day", is("2021-05-18")))
+                .andExpect(jsonPath("$.data.forecast.daily.uvi[0].day", is("2021-05-18")));
+
+    }
+
+    @Test
     void whenError_thenIncrementErrors() throws Exception {
         mvc.perform(get("/api/v1/city/tokio").contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())

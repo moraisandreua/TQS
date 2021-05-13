@@ -2,9 +2,14 @@ package tqs.tp1.airquality;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
+import org.json.JSONException;
+import org.json.JSONObject;
 import redis.clients.jedis.Jedis;
 import tqs.tp1.airquality.api.CityResponse;
 import tqs.tp1.airquality.api.CityResponseError;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Utils {
 
@@ -57,6 +62,43 @@ public class Utils {
         }
 
         jedis.set(name.toLowerCase(), retorno);
+        return retorno;
+    }
+
+    public String getJson() throws JSONException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String diaAtual = formatter.format(date);
+
+        String cache = jedis.get(name.toLowerCase());
+        String retorno = "";
+        if(cache==null){
+
+            jedis.set(name.toLowerCase()+KEY_REQUESTS, "1");
+            retorno= callAPI();
+        }else {
+            // no caso de a cache ser erro
+            if(jedis.get(name.toLowerCase()+KEY_ERRORS) != null){
+                jedis.incr(name.toLowerCase()+KEY_ERRORS);
+                jedis.incr(name.toLowerCase()+KEY_REQUESTS);
+                return cache;
+            }
+
+            jedis.incr(name+KEY_REQUESTS);
+            JSONObject obj = new JSONObject(cache);
+            JSONObject temp = (JSONObject) obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("o3").get(0);
+            String lastDay = temp.getString("day");
+
+
+            if (lastDay.equals(diaAtual) && (System.currentTimeMillis() - Long.valueOf(jedis.get(name.toLowerCase() + "_lastcheck")) < 3600000))
+                retorno= cache;
+            else
+            if(getCacheUpdate())
+                retorno= callAPI();
+            else
+                retorno= cache;
+        }
+
         return retorno;
     }
 

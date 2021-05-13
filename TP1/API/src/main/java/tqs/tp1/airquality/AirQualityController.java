@@ -46,43 +46,19 @@ public class AirQualityController {
         if(!utils.checkName())
             return "{\"status\":\"error\", \"data\":\"invalid search\"}";
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        String diaAtual = formatter.format(date);
-
-        String cache = jedis.get(name.toLowerCase());
-        String retorno = "";
-        if(cache==null){
-            jedis.set(name.toLowerCase()+KEY_REQUESTS, "1");
-            retorno= utils.callAPI();
-        }else {
-            // no caso de a cache ser erro
-            if(jedis.get(name.toLowerCase()+KEY_ERRORS) != null){
-                jedis.incr(name.toLowerCase()+KEY_ERRORS);
-                jedis.incr(name.toLowerCase()+KEY_REQUESTS);
-                return cache;
-            }
-
-            jedis.incr(name+KEY_REQUESTS);
-            JSONObject obj = new JSONObject(cache);
-            JSONObject temp = (JSONObject) obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("o3").get(0);
-            String lastDay = temp.getString("day");
-
-
-            if (lastDay.equals(diaAtual))
-                retorno= cache;
-            else
-                if(utils.getCacheUpdate())
-                    retorno= utils.callAPI();
-                else
-                    retorno= cache;
-        }
+        String retorno = utils.getJson();
 
         long endTime = System.nanoTime() / 1000000;
         long timeElapsed=endTime - startTime;
 
         jedis.lpush("_elapsedTime", String.valueOf(timeElapsed));
         return retorno;
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping(value="/city/{name}/{date}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getCityAndDate(@PathVariable(value = "name") String name, @PathVariable(value = "date") String date) throws JSONException {
+        return "";
     }
 
     @CrossOrigin(origins = "*")
