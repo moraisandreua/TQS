@@ -23,14 +23,14 @@ public class AirqualityHomePage {
     }
 
     public void setSearchInput(String name){
-        driver.findElement(searchInput).sendKeys(name);
+        driver.findElement(By.id("searchInput")).sendKeys(name);
     }
 
     public void setEnter(){
-        driver.findElement(searchInput).sendKeys(Keys.ENTER);
+        driver.findElement(By.id("searchInput")).sendKeys(Keys.ENTER);
     }
 
     public String getLocationTitle(){
-        return driver.findElement(locationTitle).getText();
+        return driver.findElement(By.id("locationTitle")).getText();
     }
 }
