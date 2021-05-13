@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.util.ReflectionTestUtils;
 import tqs.tp1.airquality.API.*;
 
 import java.util.List;
@@ -15,14 +16,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class UtilsUnitTests {
+class UtilsUnitTests {
 
     @Mock
     Utils utils;
 
     @BeforeEach
     void setup(){
-        utils=new Utils("braga");
+        //utils.setName("braga");
+        ReflectionTestUtils.setField(utils, "name",  "braga"); // object to be injected
         utils.jedis.del("braga");
     }
 
@@ -103,7 +105,7 @@ public class UtilsUnitTests {
     @Test
     void testUtils_Validators(){
         // valida o nome da cidade/pais
-        assertTrue(utils.checkName());
+        assertTrue(!utils.checkName());
 
         // valida que a cache não precisa ser atualizada
         assertTrue(!utils.getCacheUpdate());

@@ -31,7 +31,9 @@ public class AirqualityApplication {
         return args -> {
             CityResponse quote = restTemplate.getForObject(
                     "https://api.waqi.info/feed/Lisbon/?token=5c49ea620bd7657a43a14a9d17706172b71c38f4", CityResponse.class);
-            log.info(quote.toString());
+
+            if(quote != null)
+                log.info(quote.toString());
         };
     }
 }

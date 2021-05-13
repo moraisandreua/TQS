@@ -32,7 +32,7 @@ class AirQualityAPITests {
     }
 
     @Test
-    public void whenStart_thenReturnCities() throws Exception {
+    void whenStart_thenReturnCities() throws Exception {
 
         jedis.set("mexico", "{\"status\":\"error\", \"data\":\"Unknown station\"}");
         jedis.set("tokio", "{\"status\":\"error\", \"data\":\"Unknown station\"}");
@@ -46,7 +46,7 @@ class AirQualityAPITests {
     }
 
     @Test
-    public void whenSearch_thenReturnCity() throws Exception{
+    void whenSearch_thenReturnCity() throws Exception{
 
         mvc.perform(get("/api/v1/city/Porto").contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())

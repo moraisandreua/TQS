@@ -1,9 +1,10 @@
 package tqs.tp1.airquality;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import tqs.tp1.airquality.API.CityResponse;
 import tqs.tp1.airquality.API.CityResponseError;
-import org.apache.log4j.Logger;
 
 public class Utils {
 
@@ -16,8 +17,21 @@ public class Utils {
 
     private AirQualityResolver airQualityResolver=new AirQualityResolver();
 
+    public Utils(){
+        BasicConfigurator.configure();
+    }
+
     public Utils(String name){
+        BasicConfigurator.configure();
         this.name=name.toLowerCase();
+    }
+
+    public void setName(String name){
+        this.name=name.toLowerCase();
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public String callAPI(){
