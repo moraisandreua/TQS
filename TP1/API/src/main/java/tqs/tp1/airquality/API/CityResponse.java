@@ -9,6 +9,9 @@ public class CityResponse {
     private CityData data;
 
     public CityResponse() {
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public void setStatus(String status) {

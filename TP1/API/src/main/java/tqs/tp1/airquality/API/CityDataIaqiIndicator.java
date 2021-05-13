@@ -7,6 +7,9 @@ public class CityDataIaqiIndicator {
     private Float v;
 
     public CityDataIaqiIndicator() {
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public CityDataIaqiIndicator(Float value) {

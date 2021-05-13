@@ -4,6 +4,9 @@ public class CityDataForecast {
     private CityDataForecastDaily daily;
 
     public CityDataForecast() {
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public CityDataForecast(CityDataForecastDaily daily){

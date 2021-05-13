@@ -10,6 +10,9 @@ public class CityDataCity {
     private String url;
 
     public CityDataCity() {
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public CityDataCity(List<Float> geo, String name, String url) {

@@ -17,6 +17,9 @@ public class CityDataIaqi {
     private CityDataIaqiIndicator wg;
 
     public CityDataIaqi() {
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public void setDew(CityDataIaqiIndicator dew) {

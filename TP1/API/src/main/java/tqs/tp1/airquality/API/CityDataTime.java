@@ -10,6 +10,9 @@ public class CityDataTime {
     private String iso;
 
     public CityDataTime() {
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public CityDataTime(String s, String tz, Integer v, String iso) {

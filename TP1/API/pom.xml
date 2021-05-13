@@ -138,6 +138,12 @@
             <version>3.4.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.anaptecs.jeaf.owalibs</groupId>
+            <artifactId>org.apache.log4j</artifactId>
+            <version>4.3.1</version>
+        </dependency>
     </dependencies>
 
     <build>

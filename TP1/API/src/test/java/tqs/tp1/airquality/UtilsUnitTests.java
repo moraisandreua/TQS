@@ -2,16 +2,13 @@ package tqs.tp1.airquality;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import redis.clients.jedis.Jedis;
 import tqs.tp1.airquality.API.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,10 +16,11 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class UtilsUnitTests {
+
     @Mock
     Utils utils;
 
-    @Before
+    @BeforeEach
     void setup(){
         utils=new Utils("braga");
         utils.jedis.del("braga");
@@ -30,6 +28,7 @@ public class UtilsUnitTests {
 
     @Test
     public void testCall_n_Parse() throws JsonProcessingException {
+
         assertNotNull(utils);
 
         String expected = "{\"status\":\"ok\",\"data\":{\"aqi\":85,\"idx\":8372,\"attributions\":[{\"url\":\"http://www.eea.europa.eu/themes/air/\",\"name\":\"European Environment Agency\",\"logo\":\"Europe-EEA.png\"},{\"url\":\"http://qualar.apambiente.pt/\",\"name\":\"Portugal -Agencia Portuguesa do Ambiente - Qualidade do Ar\",\"logo\":\"portugal-qualar.png\"},{\"url\":\"https://waqi.info/\",\"name\":\"World Air Quality Index Project\"}],\"city\":{\"geo\":[41.274166666667,-8.3761111111111],\"name\":\"Paços de Ferreira, Paços de Ferreira, Portugal\",\"url\":\"https://aqicn.org/city/portugal/pacos-de-ferreira/pacos-de-ferreira\"},\"dominentpol\":\"pm25\",\"iaqi\":{\"h\":{\"v\":74.4},\"o3\":{\"v\":41.9},\"p\":{\"v\":1018.6},\"pm10\":{\"v\":8},\"pm25\":{\"v\":85},\"t\":{\"v\":17.1},\"w\":{\"v\":12.4},\"wg\":{\"v\":12.4}},\"time\":{\"s\":\"2021-05-12 06:00:00\",\"tz\":\"+01:00\",\"v\":1620799200,\"iso\":\"2021-05-12T06:00:00+01:00\"},\"forecast\":{\"daily\":{\"o3\":[{\"avg\":32,\"day\":\"2021-05-10\",\"max\":36,\"min\":27},{\"avg\":32,\"day\":\"2021-05-11\",\"max\":39,\"min\":27},{\"avg\":34,\"day\":\"2021-05-12\",\"max\":37,\"min\":31},{\"avg\":32,\"day\":\"2021-05-13\",\"max\":39,\"min\":23},{\"avg\":32,\"day\":\"2021-05-14\",\"max\":42,\"min\":22},{\"avg\":33,\"day\":\"2021-05-15\",\"max\":33,\"min\":31}],\"pm10\":[{\"avg\":11,\"day\":\"2021-05-10\",\"max\":16,\"min\":6},{\"avg\":17,\"day\":\"2021-05-11\",\"max\":21,\"min\":11},{\"avg\":13,\"day\":\"2021-05-12\",\"max\":20,\"min\":6},{\"avg\":10,\"day\":\"2021-05-13\",\"max\":19,\"min\":6},{\"avg\":12,\"day\":\"2021-05-14\",\"max\":18,\"min\":8},{\"avg\":10,\"day\":\"2021-05-15\",\"max\":10,\"min\":9}],\"pm25\":[{\"avg\":25,\"day\":\"2021-05-10\",\"max\":34,\"min\":15},{\"avg\":29,\"day\":\"2021-05-11\",\"max\":38,\"min\":16},{\"avg\":26,\"day\":\"2021-05-12\",\"max\":35,\"min\":14},{\"avg\":23,\"day\":\"2021-05-13\",\"max\":45,\"min\":18},{\"avg\":32,\"day\":\"2021-05-14\",\"max\":53,\"min\":20},{\"avg\":25,\"day\":\"2021-05-15\",\"max\":25,\"min\":20}],\"uvi\":[{\"avg\":1,\"day\":\"2021-05-10\",\"max\":4,\"min\":0},{\"avg\":1,\"day\":\"2021-05-11\",\"max\":4,\"min\":0},{\"avg\":1,\"day\":\"2021-05-12\",\"max\":5,\"min\":0},{\"avg\":0,\"day\":\"2021-05-13\",\"max\":3,\"min\":0},{\"avg\":1,\"day\":\"2021-05-14\",\"max\":8,\"min\":0},{\"avg\":1,\"day\":\"2021-05-15\",\"max\":3,\"min\":0},{\"avg\":1,\"day\":\"2021-05-16\",\"max\":4,\"min\":0}]}},\"debug\":{\"sync\":\"2021-05-12T17:48:00+09:00\"}}}";
@@ -104,7 +103,7 @@ public class UtilsUnitTests {
     @Test
     void testUtils_Validators(){
         // valida o nome da cidade/pais
-        assertTrue(!utils.checkName());
+        assertTrue(utils.checkName());
 
         // valida que a cache não precisa ser atualizada
         assertTrue(!utils.getCacheUpdate());

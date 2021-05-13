@@ -9,6 +9,9 @@ public class CityDataForecastDaily {
     private List<CityDataForecastDailyIndicator> uvi;
 
     public CityDataForecastDaily() {
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public CityDataForecastDaily(List<CityDataForecastDailyIndicator> o3, List<CityDataForecastDailyIndicator> pm10, List<CityDataForecastDailyIndicator> pm25, List<CityDataForecastDailyIndicator> uvi) {

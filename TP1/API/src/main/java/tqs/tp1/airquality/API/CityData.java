@@ -15,6 +15,9 @@ public class CityData {
     private CityDataForecast forecast;
 
     public CityData() {
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public void setAqi(Integer aqi) {

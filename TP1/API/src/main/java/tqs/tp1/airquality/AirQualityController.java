@@ -1,27 +1,22 @@
 package tqs.tp1.airquality; // AirQualityController
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import redis.clients.jedis.Jedis;
-import tqs.tp1.airquality.API.CityResponse;
-import tqs.tp1.airquality.API.CityResponseError;
-
-import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
+import org.apache.log4j.Logger;
 
 @RestController
 @RequestMapping("/api/v1")
 public class AirQualityController {
+    static final String KEY_ERRORS="_errors";
+    static final String KEY_REQUESTS="_requests";
     Jedis jedis = Utils.connect();
-
+    static Logger log = Logger.getLogger(AirQualityController.class.getName());
     // lista de cidades que vão sendo encontradas
     // é chamado de cada vez que alguem entra na página web
     @CrossOrigin(origins = "*")
@@ -29,7 +24,8 @@ public class AirQualityController {
     public String getAllCities() {
         Set<String> cidades = jedis.keys("*");
         List<String> retorno = new ArrayList<>();
-        System.out.println(cidades);
+        
+        log.info(cidades.toString());
         for(String x : cidades)
             if(new Utils(x).checkName())
                 retorno.add("\"" + x + "\"");
@@ -54,17 +50,17 @@ public class AirQualityController {
         String cache = jedis.get(name.toLowerCase());
         String retorno = "";
         if(cache==null){
-            jedis.set(name.toLowerCase()+"_requests", "1");
+            jedis.set(name.toLowerCase()+KEY_REQUESTS, "1");
             retorno= utils.callAPI();
         }else {
             // no caso de a cache ser erro
-            if(jedis.get(name.toLowerCase()+"_errors") != null){
-                jedis.incr(name.toLowerCase()+"_errors");
-                jedis.incr(name.toLowerCase()+"_requests");
+            if(jedis.get(name.toLowerCase()+KEY_ERRORS) != null){
+                jedis.incr(name.toLowerCase()+KEY_ERRORS);
+                jedis.incr(name.toLowerCase()+KEY_REQUESTS);
                 return cache;
             }
 
-            jedis.incr(name+"_requests");
+            jedis.incr(name+KEY_REQUESTS);
             JSONObject obj = new JSONObject(cache);
             JSONObject temp = (JSONObject) obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("o3").get(0);
             String last_day = temp.getString("day");
@@ -90,20 +86,20 @@ public class AirQualityController {
     @GetMapping("/logs")
     public String getLogs(){
         // requests
-        Set<String> request = jedis.keys("*_requests");
+        Set<String> request = jedis.keys("*"+KEY_REQUESTS);
         List<String> request_list = new ArrayList<>();
         request_list.add("[\"Requests\", \"Searches per city\"]");
         for(String x : request)
-            if(x.contains("_requests"))
-                request_list.add("[\""+x.replace("_requests", "")+"\", "+Integer.valueOf(jedis.get(x))+"]");
+            if(x.contains(KEY_REQUESTS))
+                request_list.add("[\""+x.replace(KEY_REQUESTS, "")+"\", "+Integer.valueOf(jedis.get(x))+"]");
 
         //errors
-        Set<String> error = jedis.keys("*_errors");
+        Set<String> error = jedis.keys("*" + KEY_ERRORS);
         List<String> error_list = new ArrayList<>();
         error_list.add("[\"Errors\", \"Failed searches per city\"]");
         for(String x : error)
-            if(x.contains("_errors"))
-                error_list.add("[\""+x.replace("_errors", "")+"\", "+Integer.valueOf(jedis.get(x))+"]");
+            if(x.contains(KEY_ERRORS))
+                error_list.add("[\""+x.replace(KEY_ERRORS, "")+"\", "+Integer.valueOf(jedis.get(x))+"]");
 
         // elapsed time
         List<String> elTime = jedis.lrange("_elapsedTime", 0, 15);

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AirqualityHomePage {
+class AirqualityHomePage {
     WebDriver driver;
 
     @FindBy(id="searchInput")

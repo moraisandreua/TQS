@@ -9,6 +9,9 @@ public class CityResponseError {
     private String data;
 
     public CityResponseError() {
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public void setStatus(String status) {

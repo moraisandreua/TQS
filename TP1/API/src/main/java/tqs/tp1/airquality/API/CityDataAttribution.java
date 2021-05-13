@@ -9,6 +9,9 @@ public class CityDataAttribution {
     private String logo;
 
     public CityDataAttribution() {
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public CityDataAttribution(String url, String name, String logo) {

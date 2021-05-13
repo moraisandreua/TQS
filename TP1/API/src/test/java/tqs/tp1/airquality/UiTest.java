@@ -11,7 +11,6 @@ import static org.hamcrest.CoreMatchers.is;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.JavascriptExecutor;
 
 
@@ -19,7 +18,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @ExtendWith(SeleniumJupiter.class)
-public class UiTest {
+class UiTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -38,7 +37,7 @@ public class UiTest {
     }
 
     @Test
-    public void testSearch() throws InterruptedException {
+    void testSearch() throws InterruptedException {
         AirqualityHomePage home = new AirqualityHomePage(driver);
 
         home.setSearchInput("Porto");

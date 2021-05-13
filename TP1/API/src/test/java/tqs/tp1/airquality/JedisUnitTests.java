@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.testcontainers.junit.jupiter.Container;
@@ -19,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class JedisUnitTests {
+class JedisUnitTests {
 
     @Container
     private RedisContainer underTest = new RedisContainer("localhost", 6379);
@@ -37,7 +36,7 @@ public class JedisUnitTests {
     }
 
     @Test
-    public void testGetKey(){
+    void testGetKey(){
         String gotTokio = underTest.getJedis().get("tokio");
 
         assertEquals("{\"status\":\"error\", \"data\":\"No city with that name\"}", gotTokio);
@@ -50,7 +49,7 @@ public class JedisUnitTests {
     }
 
     @Test
-    public void testParseJson_fromRedis() throws JsonProcessingException {
+    void testParseJson_fromRedis() throws JsonProcessingException {
         String braga = underTest.getJedis().get("braga");
 
         CityResponse braga_cr = new ObjectMapper().readValue(braga, CityResponse.class);

@@ -7,6 +7,9 @@ public class CityDataForecastDailyIndicator {
     private Integer min;
 
     public CityDataForecastDailyIndicator(){
+        /*
+        // GERADO AUTOMATICAMENTE PELO PARSER JSON
+         */
     }
 
     public CityDataForecastDailyIndicator(Integer avg, String day, Integer max, Integer min) {

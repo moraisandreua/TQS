@@ -16,11 +16,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class WaqiApiTests {
+class WaqiApiTests {
     @Mock
     RestTemplate restTemplate;
 
@@ -104,7 +103,7 @@ public class WaqiApiTests {
     }
 
     @Test
-    public void whenWrongPlace_throwIncorrectName() {
+    void whenWrongPlace_throwIncorrectName() {
         //unecessary stubbing
         //when(restTemplate.getForObject(contains("/feed/Tokio/"), eq(CityResponseError.class))).thenThrow(IndexOutOfBoundsException.class);
 

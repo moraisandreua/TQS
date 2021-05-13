@@ -1,12 +1,16 @@
 package tqs.tp1.airquality;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.client.RestTemplate;
 import redis.clients.jedis.Jedis;
 import tqs.tp1.airquality.API.CityResponse;
 import tqs.tp1.airquality.API.CityResponseError;
+import org.apache.log4j.Logger;
 
 public class Utils {
+
+    static Logger log = Logger.getLogger(Utils.class.getName());
+    static final String KEY_ERRORS="_errors";
+    static final String KEY_LASTCHECK="_lastcheck";
+    static final String KEY_REQUESTS="_requests";
     private String name;
     static Jedis jedis = connect();
 
@@ -17,11 +21,10 @@ public class Utils {
     }
 
     public String callAPI(){
-        RestTemplate restTemplate = new RestTemplate();
         String retorno="";
         try{
             CityResponse quote = airQualityResolver.findResultForName(name);
-            jedis.set(name.toLowerCase() + "_lastcheck", String.valueOf(System.currentTimeMillis()));
+            jedis.set(name.toLowerCase() + KEY_LASTCHECK, String.valueOf(System.currentTimeMillis()));
             retorno= quote.toString();
         }catch(Exception e){
             CityResponseError quote = null;
@@ -32,10 +35,10 @@ public class Utils {
             }catch(Exception e2){
                 retorno="{\"status\":\"error\", \"data\":\"Error on that place\"}";
             }
-            String erros = jedis.get(name.toLowerCase()+"_errors");
+            String erros = jedis.get(name.toLowerCase()+KEY_ERRORS);
 
             if(erros==null)
-                jedis.set(name.toLowerCase()+"_errors", "1");
+                jedis.set(name.toLowerCase()+KEY_ERRORS, "1");
 
         }
 
@@ -44,25 +47,21 @@ public class Utils {
     }
 
     public boolean checkName(){
-        if(name.contains("_requests") || name.contains("_errors") || name.contains("_lastcheck")){
-            return false;
-        }
-        return true;
+        return (!name.contains(KEY_REQUESTS) && !name.contains(KEY_ERRORS) && !name.contains(KEY_LASTCHECK) && !name.equals("_elapsedTime"));
     }
 
     public boolean getCacheUpdate(){
         // verifica se já passou um dia desde o ultimo pedido acedido à db
-        return System.currentTimeMillis() - Long.valueOf(jedis.get(name.toLowerCase() + "_lastcheck")) > 3600000;
+        return System.currentTimeMillis() - Long.valueOf(jedis.get(name.toLowerCase() + KEY_LASTCHECK)) > 3600000;
     }
 
     public static Jedis connect(){
-        try {
-            Jedis jedis = new Jedis("localhost");
-            System.out.println("The server is running " + jedis.ping());
-            System.out.println("Connection Successful");
-            return jedis;
+        try (Jedis jedisNew = new Jedis("localhost")){
+            log.info("The server is running " + jedisNew.ping());
+            log.info("Connection Successful");
+            return jedisNew;
         }catch(Exception e) {
-            System.out.println(e);
+            log.info(e);
         }
         return null;
     }
