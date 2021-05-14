@@ -111,8 +111,6 @@ class AirQualityAPITests {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.elapsed_time", hasSize(lessThanOrEqualTo(17))))
                 .andDo(document("logs"));
-
-
-
     }
+
 }

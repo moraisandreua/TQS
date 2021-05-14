@@ -21,10 +21,12 @@ class UtilsUnitTests {
     @Mock
     Utils utils;
 
+    Utils utils2=new Utils("braga");
+
     @BeforeEach
     void setup(){
         MockitoAnnotations.initMocks(this);
-        utils.setName("braga");
+        //utils.setName("braga");
         //ReflectionTestUtils.setField(utils, "name",  "braga"); // object to be injected
         utils.jedis.del("braga");
     }
@@ -106,9 +108,9 @@ class UtilsUnitTests {
     @Test
     void testUtils_Validators(){
         // valida o nome da cidade/pais
-        assertTrue(!utils.checkName());
+        assertTrue(utils2.checkName());
 
         // valida que a cache não precisa ser atualizada
-        assertTrue(!utils.getCacheUpdate());
+        assertTrue(utils2.getCacheUpdate());
     }
 }
