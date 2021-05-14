@@ -17,6 +17,10 @@ public class AirQualityController {
 
     static final String KEY_ERRORS="_errors";
     static final String KEY_REQUESTS="_requests";
+    static final String DAY="day";
+    static final String DAILY="daily";
+    static final String FORECAST="forecast";
+    static final String ELAPSED_TIME="_elapsedTime";
 
     Jedis jedis = Utils.connect();
 
@@ -52,7 +56,7 @@ public class AirQualityController {
         long endTime = System.nanoTime() / 1000000;
         long timeElapsed=endTime - startTime;
 
-        jedis.lpush("_elapsedTime", String.valueOf(timeElapsed));
+        jedis.lpush(ELAPSED_TIME, String.valueOf(timeElapsed));
         return retorno;
     }
 
@@ -71,39 +75,39 @@ public class AirQualityController {
         JSONObject obj = new JSONObject(retorno);
 
         if(obj.getString("status").equals("ok")){
-            JSONArray tempO3 = obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("o3");
+            JSONArray tempO3 = obj.getJSONObject("data").getJSONObject(FORECAST).getJSONObject(DAILY).getJSONArray("o3");
             JSONArray finalO3= new JSONArray();
-            JSONArray tempPm10 = obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("pm10");
+            JSONArray tempPm10 = obj.getJSONObject("data").getJSONObject(FORECAST).getJSONObject(DAILY).getJSONArray("pm10");
             JSONArray finalPm10= new JSONArray();
-            JSONArray tempPm25 = obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("pm25");
+            JSONArray tempPm25 = obj.getJSONObject("data").getJSONObject(FORECAST).getJSONObject(DAILY).getJSONArray("pm25");
             JSONArray finalPm25= new JSONArray();
-            JSONArray tempuvi = obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("uvi");
+            JSONArray tempuvi = obj.getJSONObject("data").getJSONObject(FORECAST).getJSONObject(DAILY).getJSONArray("uvi");
             JSONArray finalUvi= new JSONArray();
 
             for(int i=0; i<tempO3.length(); i++){
                 JSONObject tmp = (JSONObject)tempO3.get(i);
-                String data_obj = tmp.getString("day");
+                String data_obj = tmp.getString(DAY);
                 if(data_obj.equals(date))
                     finalO3.put(tmp);
             }
 
             for(int i=0; i<tempPm10.length(); i++){
                 JSONObject tmp = (JSONObject)tempPm10.get(i);
-                String data_obj = tmp.getString("day");
+                String data_obj = tmp.getString(DAY);
                 if(data_obj.equals(date))
                     finalPm10.put(tmp);
             }
 
             for(int i=0; i<tempPm25.length(); i++){
                 JSONObject tmp = (JSONObject)tempPm25.get(i);
-                String data_obj = tmp.getString("day");
+                String data_obj = tmp.getString(DAY);
                 if(data_obj.equals(date))
                     finalPm25.put(tmp);
             }
 
             for(int i=0; i<tempuvi.length(); i++){
                 JSONObject tmp = (JSONObject)tempuvi.get(i);
-                String data_obj = tmp.getString("day");
+                String data_obj = tmp.getString(DAY);
                 if(data_obj.equals(date)) {
                     finalUvi.put(tmp);
                 }
@@ -115,7 +119,7 @@ public class AirQualityController {
         long endTime = System.nanoTime() / 1000000;
         long timeElapsed=endTime - startTime;
 
-        jedis.lpush("_elapsedTime", String.valueOf(timeElapsed));
+        jedis.lpush(ELAPSED_TIME, String.valueOf(timeElapsed));
         return retorno;
     }
 
@@ -139,7 +143,7 @@ public class AirQualityController {
                 errorList.add("[\""+x.replace(KEY_ERRORS, "")+"\", "+Integer.valueOf(jedis.get(x))+"]");
 
         // elapsed time
-        List<String> elTime = jedis.lrange("_elapsedTime", 0, 15);
+        List<String> elTime = jedis.lrange(ELAPSED_TIME, 0, 15);
         List<String> elTimeList = new ArrayList<>();
         elTimeList.add("[\"x\", \"Elapsed Time (ms)\"]");
         int counter=0;

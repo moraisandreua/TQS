@@ -52,6 +52,7 @@ public class Utils {
 
                 retorno= quote.toString();
             }catch(Exception e2){
+                log.fatal("there is an error with " + name);
                 retorno="{\"status\":\"error\", \"data\":\"Error on that place\"}";
             }
             String erros = jedis.get(name+KEY_ERRORS);
@@ -73,7 +74,7 @@ public class Utils {
         String cache = jedis.get(name.toLowerCase());
         String retorno = "";
         if(cache==null){
-
+            log.info("getting " + name + " directly from external API");
             jedis.set(name.toLowerCase()+KEY_REQUESTS, "1");
             retorno= callAPI();
         }else {
@@ -81,6 +82,7 @@ public class Utils {
             if(jedis.get(name.toLowerCase()+KEY_ERRORS) != null){
                 jedis.incr(name.toLowerCase()+KEY_ERRORS);
                 jedis.incr(name.toLowerCase()+KEY_REQUESTS);
+                log.info("failing on getting " + name);
                 return cache;
             }
 
@@ -90,7 +92,7 @@ public class Utils {
             String lastDay = temp.getString("day");
 
 
-            if (lastDay.equals(diaAtual) && (System.currentTimeMillis() - Long.valueOf(jedis.get(name.toLowerCase() + "_lastcheck")) < 3600000))
+            if (lastDay.equals(diaAtual) && (System.currentTimeMillis() - Long.valueOf(jedis.get(name.toLowerCase() + KEY_LASTCHECK)) < 3600000))
                 retorno= cache;
             else
             if(getCacheUpdate())
@@ -114,7 +116,6 @@ public class Utils {
     public static Jedis connect(){
         try (Jedis jedisNew = new Jedis("localhost")){
             log.info("The server is running " + jedisNew.ping());
-            log.info("Connection Successful");
             return jedisNew;
         }catch(Exception e) {
             log.info(e);

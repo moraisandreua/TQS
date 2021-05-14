@@ -39,6 +39,13 @@ class WaqiApiTests {
     }
 
     @Test
+    void whenGeo_returnAirQuality() throws JsonProcessingException {
+        CityResponse cr = restTemplate2.getForObject( "https://api.waqi.info/feed/geo:41.1475;-8.6588888888889/?token=5c49ea620bd7657a43a14a9d17706172b71c38f4", CityResponse.class);
+        log.fatal(cr.toString());
+        assertThat(cr.getData().getCity().getName(), is("Sobreiras-Lordelo do Ouro, Porto, Portugal"));
+    }
+
+    @Test
     void whenWrongPlace_throwIncorrectName() {
         CityResponseError result=null;
         when(restTemplate.getForObject(contains("/feed/Coimbra/"), eq(CityResponseError.class))).thenThrow(IndexOutOfBoundsException.class);

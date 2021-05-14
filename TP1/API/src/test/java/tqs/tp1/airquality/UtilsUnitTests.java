@@ -29,6 +29,7 @@ class UtilsUnitTests {
         //utils.setName("braga");
         //ReflectionTestUtils.setField(utils, "name",  "braga"); // object to be injected
         utils.jedis.del("braga");
+        utils2.jedis.set("braga_lastcheck", String.valueOf(System.currentTimeMillis()));
     }
 
     @Test
@@ -111,6 +112,6 @@ class UtilsUnitTests {
         assertTrue(utils2.checkName());
 
         // valida que a cache não precisa ser atualizada
-        assertTrue(utils2.getCacheUpdate());
+        assertTrue(!utils2.getCacheUpdate());
     }
 }
