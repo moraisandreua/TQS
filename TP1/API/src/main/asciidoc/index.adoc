@@ -1,0 +1,38 @@
+= Getting Started With Spring REST Docs
+
+This is an example output for a service running at http://localhost:8080:
+
+
+=== /api/v1/cities
+
+.request
+include::snippets/cities/http-request.adoc[]
+
+.response
+include::snippets/cities/http-response.adoc[]
+
+=== /api/v1/city/name
+
+.request
+include::snippets/cityname/http-request.adoc[]
+
+.response
+include::snippets/cityname/http-response.adoc[]
+
+=== /api/v1/city/name/date
+
+.request
+include::snippets/citynamedate/http-request.adoc[]
+
+.response
+include::snippets/citynamedate/http-response.adoc[]
+
+=== /api/v1/logs
+
+.request
+include::snippets/logs/http-request.adoc[]
+
+.response
+include::snippets/logs/http-response.adoc[]
+
+As you can see the format is very simple, and in fact you always get the same message.

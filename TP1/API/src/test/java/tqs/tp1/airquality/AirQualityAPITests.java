@@ -3,10 +3,13 @@ package tqs.tp1.airquality;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import redis.clients.jedis.Jedis;
 
@@ -16,9 +19,11 @@ import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = AirqualityApplication.class)
 @AutoConfigureMockMvc
+@AutoConfigureRestDocs(outputDir = "target/snippets")
 class AirQualityAPITests {
     @Autowired
     private MockMvc mvc;
@@ -43,7 +48,8 @@ class AirQualityAPITests {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))));
+                .andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))))
+                .andDo(document("cities"));
                 //.andExpect(jsonPath("$[1]", is("mexico"))); // porque o LPUSH insere à esquerda. Logo, como mexico foi o primeiro a ser inserido, vai estar na segunda posição
     }
 
@@ -55,7 +61,8 @@ class AirQualityAPITests {
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.status", is("ok")))
-                .andExpect(jsonPath("$.data.city.name", is("Sobreiras-Lordelo do Ouro, Porto, Portugal")));
+                .andExpect(jsonPath("$.data.city.name", is("Sobreiras-Lordelo do Ouro, Porto, Portugal")))
+                .andDo(document("cityname"));
     }
 
     @Test
@@ -72,14 +79,15 @@ class AirQualityAPITests {
 
     @Test
     void whenSearchData_thenGetResults() throws Exception {
-        mvc.perform(get("/api/v1/city/2021-05-18").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/api/v1/city/porto/2021-05-17").contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.data.forecast.daily.o3[0].day", is("2021-05-18")))
-                .andExpect(jsonPath("$.data.forecast.daily.pm10[0].day", is("2021-05-18")))
-                .andExpect(jsonPath("$.data.forecast.daily.pm25[0].day", is("2021-05-18")))
-                .andExpect(jsonPath("$.data.forecast.daily.uvi[0].day", is("2021-05-18")));
+                .andExpect(jsonPath("$.data.forecast.daily.o3[0].day", is("2021-05-17")))
+                .andExpect(jsonPath("$.data.forecast.daily.pm10[0].day", is("2021-05-17")))
+                .andExpect(jsonPath("$.data.forecast.daily.pm25[0].day", is("2021-05-17")))
+                .andExpect(jsonPath("$.data.forecast.daily.uvi[0].day", is("2021-05-17")))
+                .andDo(document("citynamedate"));
 
     }
 
@@ -101,7 +109,8 @@ class AirQualityAPITests {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.elapsed_time", hasSize(lessThanOrEqualTo(17))));
+                .andExpect(jsonPath("$.elapsed_time", hasSize(lessThanOrEqualTo(17))))
+                .andDo(document("logs"));
 
 
 

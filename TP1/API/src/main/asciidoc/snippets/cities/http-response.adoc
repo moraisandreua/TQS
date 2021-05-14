@@ -1,0 +1,11 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json
+Content-Length: 153
+
+["japao", "japan", "porto", "lisboa", "_elapsedtime", "belgium", "2021-05-17", "tokio", "sidney", "lisbon", "_elapsedTime", "coimbra", "mexico", "china"]
+----

@@ -69,6 +69,7 @@
 .NavBarSearch{
   width: fit-content;
   position: relative;
+  padding: 0px 5px;
 }
 
 .NavBarSearch .suggestions{

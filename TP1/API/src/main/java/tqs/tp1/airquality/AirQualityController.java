@@ -1,5 +1,6 @@
 package tqs.tp1.airquality; // AirQualityController
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
@@ -58,7 +59,64 @@ public class AirQualityController {
     @CrossOrigin(origins = "*")
     @GetMapping(value="/city/{name}/{date}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getCityAndDate(@PathVariable(value = "name") String name, @PathVariable(value = "date") String date) throws JSONException {
-        return "";
+        long startTime = System.nanoTime() / 1000000;
+
+        Utils utils = new Utils(name);
+
+        if(!utils.checkName())
+            return "{\"status\":\"error\", \"data\":\"invalid search\"}";
+
+        String retorno = utils.getJson();
+
+        JSONObject obj = new JSONObject(retorno);
+
+        if(obj.getString("status").equals("ok")){
+            JSONArray tempO3 = obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("o3");
+            JSONArray finalO3= new JSONArray();
+            JSONArray tempPm10 = obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("pm10");
+            JSONArray finalPm10= new JSONArray();
+            JSONArray tempPm25 = obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("pm25");
+            JSONArray finalPm25= new JSONArray();
+            JSONArray tempuvi = obj.getJSONObject("data").getJSONObject("forecast").getJSONObject("daily").getJSONArray("uvi");
+            JSONArray finalUvi= new JSONArray();
+
+            for(int i=0; i<tempO3.length(); i++){
+                JSONObject tmp = (JSONObject)tempO3.get(i);
+                String data_obj = tmp.getString("day");
+                if(data_obj.equals(date))
+                    finalO3.put(tmp);
+            }
+
+            for(int i=0; i<tempPm10.length(); i++){
+                JSONObject tmp = (JSONObject)tempPm10.get(i);
+                String data_obj = tmp.getString("day");
+                if(data_obj.equals(date))
+                    finalPm10.put(tmp);
+            }
+
+            for(int i=0; i<tempPm25.length(); i++){
+                JSONObject tmp = (JSONObject)tempPm25.get(i);
+                String data_obj = tmp.getString("day");
+                if(data_obj.equals(date))
+                    finalPm25.put(tmp);
+            }
+
+            for(int i=0; i<tempuvi.length(); i++){
+                JSONObject tmp = (JSONObject)tempuvi.get(i);
+                String data_obj = tmp.getString("day");
+                if(data_obj.equals(date)) {
+                    finalUvi.put(tmp);
+                }
+            }
+
+            retorno="{\"status\":\"ok\", \"data\":{ \"aqi\":" + obj.getJSONObject("data").getInt("aqi") + " ,\"idx\":" + obj.getJSONObject("data").getInt("idx") + " ,\"attributions\":" + obj.getJSONObject("data").getJSONArray("attributions").toString() + " ,\"city\":" + obj.getJSONObject("data").getJSONObject("city").toString() + " ,\"dominentpol\": \"" + obj.getJSONObject("data").getString("dominentpol") + "\" ,\"iaqi\":" + obj.getJSONObject("data").getJSONObject("iaqi").toString() + " ,\"time\":" + obj.getJSONObject("data").getJSONObject("time").toString() + " ,\"forecast\":{" + " \"daily\":{" + " \"o3\":" + finalO3.toString() + " ,\"pm10\":" + finalPm10.toString() + " ,\"pm25\":" + finalPm25.toString() + " ,\"uvi\":" + finalUvi.toString() + " }}}}";
+        }
+
+        long endTime = System.nanoTime() / 1000000;
+        long timeElapsed=endTime - startTime;
+
+        jedis.lpush("_elapsedTime", String.valueOf(timeElapsed));
+        return retorno;
     }
 
     @CrossOrigin(origins = "*")

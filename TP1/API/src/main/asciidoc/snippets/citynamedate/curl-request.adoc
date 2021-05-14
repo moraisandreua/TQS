@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/v1/city/porto/2021-05-17' -i -X GET \
+    -H 'Content-Type: application/json;charset=UTF-8'
+----

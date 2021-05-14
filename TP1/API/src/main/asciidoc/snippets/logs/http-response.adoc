@@ -1,0 +1,11 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json
+Content-Length: 615
+
+{"requests": [["Requests", "Searches per city"], ["japan", 2], ["_elapsedtime", 1], ["tokio", 10], ["braga", 1], ["china", 3], ["lisbon", 1], ["coimbra", 2], ["belgium", 1], ["lisboa", 3], ["porto", 36], ["2021-05-17", 2], ["japao", 1], ["mexico", 4], ["sidney", 1]], "errors": [["Errors", "Failed searches per city"], ["tokio", 10], ["2021-05-17", 2], ["belgium", 1], ["_elapsedtime", 1], ["coimbra", 2], ["japao", 1]], "elapsed_time":[["x", "Elapsed Time (ms)"], [0, 21], [1, 43], [2, 14], [3, 32], [4, 25], [5, 22], [6, 35], [7, 13], [8, 36], [9, 19], [10, 24], [11, 43], [12, 19], [13, 38], [14, 18], [15, 21]]}
+----

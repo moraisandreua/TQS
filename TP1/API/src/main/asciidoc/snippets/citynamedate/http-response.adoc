@@ -1,0 +1,11 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/json
+Content-Length: 1060
+
+{"status":"ok", "data":{ "aqi":28 ,"idx":8373 ,"attributions":[{"name":"Portugal -Agencia Portuguesa do Ambiente - Qualidade do Ar","logo":"portugal-qualar.png","url":"http:\/\/qualar.apambiente.pt\/"},{"name":"European Environment Agency","logo":"Europe-EEA.png","url":"http:\/\/www.eea.europa.eu\/themes\/air\/"},{"name":"World Air Quality Index Project","logo":"null","url":"https:\/\/waqi.info\/"}] ,"city":{"geo":[41.1475,-8.658889],"name":"Sobreiras-Lordelo do Ouro, Porto, Portugal","url":"https:\/\/aqicn.org\/city\/portugal\/porto\/sobreiras-lordelo-do-ouro"} ,"dominentpol": "o3" ,"iaqi":{"no2":null,"p":1019.7,"wg":9.3,"o3":27.7,"pm25":5,"t":13.7,"dew":null,"so2":null,"w":2.6,"h":95,"pm10":null} ,"time":{"s":"2021-05-13 20:00:00","iso":"2021-05-13T20:00:00+01:00","tz":"+01:00","v":1620936000} ,"forecast":{ "daily":{ "o3":[{"avg":34,"min":30,"max":34,"day":"2021-05-17"}] ,"pm10":[{"avg":12,"min":12,"max":16,"day":"2021-05-17"}] ,"pm25":[{"avg":26,"min":26,"max":32,"day":"2021-05-17"}] ,"uvi":[{"avg":1,"min":0,"max":9,"day":"2021-05-17"}] }}}}
+----

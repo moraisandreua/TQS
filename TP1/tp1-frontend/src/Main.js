@@ -8,18 +8,20 @@ export default class Main extends React.Component {
         this.state={
             alreadySearched:[],
             search:"",
-            o3:[{"day":"10-05-2021", "avg":"33", "min":"28", "max":"38"}],
-            pm10:[{"day":"10-05-2021", "avg":"33", "min":"28", "max":"38"}],
-            pm25:[{"day":"10-05-2021", "avg":"33", "min":"28", "max":"38"}],
-            uvi:[{"day":"10-05-2021", "avg":"33", "min":"28", "max":"38"}],
+            searchDate:"",
+            o3:[{"day":"10-05-2021", "avg":"-", "min":"-", "max":"-"}],
+            pm10:[{"day":"10-05-2021", "avg":"-", "min":"-", "max":"-"}],
+            pm25:[{"day":"10-05-2021", "avg":"-", "min":"-", "max":"-"}],
+            uvi:[{"day":"10-05-2021", "avg":"-", "min":"-", "max":"-"}],
             location:"Location, country",
-            iaqi:{}
+            iaqi:{},
+            resultsDate:"-"
         }
     }
 
     search = (e) => {
         if(e.which === 13) {
-            fetch("http://localhost:8080/api/v1/city/"+this.state.search).then(data => data.json()).then(data => (data.status==="ok") ? this.setState({o3:data.data.forecast.daily.o3, pm10:data.data.forecast.daily.pm10, pm25:data.data.forecast.daily.pm25, uvi:data.data.forecast.daily.uvi, location: data.data.city.name, iaqi: data.data.iaqi}) : alert(data.data));
+            fetch("http://localhost:8080/api/v1/city/"+this.state.search + "/" + this.state.searchDate).then(data => data.json()).then(data => (data.status==="ok") ? this.setState({o3:data.data.forecast.daily.o3, pm10:data.data.forecast.daily.pm10, pm25:data.data.forecast.daily.pm25, uvi:data.data.forecast.daily.uvi, location: data.data.city.name, iaqi: data.data.iaqi, searchDate:"", resultsDate:data.data.time.s}) : alert(data.data));
         }
     }
 
@@ -34,6 +36,9 @@ export default class Main extends React.Component {
                     <div className="NavBarTitle">AirQuality</div>
                     <div className="NavBarButton"><Link to="/logs">Logs</Link></div>
                     <div className="NavBarWrapper"></div>
+                    <div className="NavBarSearch">
+                        <input type="date" onChange={(e) => this.setState({searchDate : e.target.value})} value={this.state.searchDate}/>
+                    </div>
                     <div className="NavBarSearch">
                         {
                             (this.state.search.length > 3) ? 
@@ -53,6 +58,7 @@ export default class Main extends React.Component {
                 </div>
                 <div className="Cards">
                     <div className="Card" id="locationTitle">{this.state.location}</div>
+                    <div className="Card">Data from: {this.state.resultsDate}</div>
                 </div>
                 <div className="Cards">
                     <div className="Card">
