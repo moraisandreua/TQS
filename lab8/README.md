@@ -263,5 +263,9 @@ Finished: SUCCESS
 
 # TASK IV
 
+![setup_dockerfile](https://i.imgur.com/pCAyT8T.png)
+
+![initialpassword](https://i.imgur.com/OBoVtgG.png)
+
 
 
